@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corpus — Cuvântul, Omul, Lumea · Korpuset — Ordet, Mennesket, Verden</title>
+<style>
+  :root {
+    --bg:        #0f1117;
+    --surface:   #181c27;
+    --border:    #2a2f42;
+    --gold:      #c9a84c;
+    --gold-dim:  #8a6e30;
+    --teal:      #4a9e9e;
+    --violet:    #7c6fb0;
+    --rose:      #b85c5c;
+    --amber:     #d4973a;
+    --green:     #4a9e6a;
+    --text:      #dde1ec;
+    --muted:     #7a8199;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Georgia','Times New Roman',serif;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    min-height: 100vh;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    text-align: center;
+    padding: 7rem 2rem 5rem;
+    background: radial-gradient(ellipse at 50% 30%, #1a1f33 0%, #0f1117 65%);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .hero-label {
+    font-size: .75rem;
+    letter-spacing: .2em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 1.8rem;
+  }
+  .hero h1 {
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: .8rem;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero-divider {
+    display: block;
+    font-size: .85rem;
+    color: var(--gold-dim);
+    margin: .3rem 0 .8rem;
+    letter-spacing: .1em;
+  }
+  .hero-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 540px;
+    margin: 0 auto 1.8rem;
+    font-style: italic;
+  }
+  .lang-toggle {
+    display: inline-flex;
+    gap: .5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: .3rem;
+    margin-bottom: 1rem;
+  }
+  .lang-toggle button {
+    background: none;
+    border: none;
+    padding: .35rem .9rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: .82rem;
+    color: var(--muted);
+    font-family: inherit;
+    transition: background .2s, color .2s;
+  }
+  .lang-toggle button.active {
+    background: var(--gold);
+    color: #0f1117;
+    font-weight: 700;
+  }
+
+  /* ── CORPUS SECTIONS ── */
+  .corpus-section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+  }
+  .corpus-section + .corpus-section {
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 2.2rem;
+  }
+  .section-flag { font-size: 1.6rem; }
+  .section-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: .04em;
+  }
+  .section-subtitle {
+    font-size: .82rem;
+    color: var(--muted);
+    margin-top: .2rem;
+  }
+
+  /* ── DOCUMENT CARDS ── */
+  .doc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .doc-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.3rem 1.4rem;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    transition: border-color .2s, background .2s, transform .15s;
+    position: relative;
+    overflow: hidden;
+  }
+  .doc-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    border-radius: 10px 0 0 10px;
+  }
+  .doc-card.c1::before { background: var(--gold); }
+  .doc-card.c2::before { background: var(--violet); }
+  .doc-card.c3::before { background: var(--rose); }
+  .doc-card.c4::before { background: var(--amber); }
+  .doc-card.c5::before { background: var(--green); }
+  .doc-card:hover {
+    border-color: rgba(201,168,76,.4);
+    background: rgba(201,168,76,.04);
+    transform: translateY(-2px);
+  }
+  .doc-num {
+    font-size: .68rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .doc-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.25;
+  }
+  .doc-subtitle {
+    font-size: .82rem;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.5;
+  }
+  .doc-chapters {
+    font-size: .75rem;
+    color: var(--muted);
+    margin-top: .3rem;
+    line-height: 1.55;
+  }
+  .doc-chapters span {
+    display: inline-block;
+    background: rgba(255,255,255,.05);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: .1rem .4rem;
+    margin: .1rem .15rem .1rem 0;
+    white-space: nowrap;
+  }
+  .doc-arrow {
+    font-size: .8rem;
+    color: var(--gold-dim);
+    margin-top: auto;
+    padding-top: .6rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── THREAD SECTION ── */
+  .threads-section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4rem;
+    border-top: 1px solid var(--border);
+  }
+  .threads-title {
+    font-size: .82rem;
+    letter-spacing: .14em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 1.4rem;
+  }
+  .thread-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .7rem;
+  }
+  .thread-item {
+    background: rgba(201,168,76,.04);
+    border: 1px dashed var(--gold-dim);
+    border-radius: 8px;
+    padding: .8rem 1rem;
+    font-size: .85rem;
+    line-height: 1.55;
+    color: var(--text);
+  }
+  .thread-item strong { color: var(--gold); display: block; font-size: .78rem; margin-bottom: .2rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: .8rem;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 640px) {
+    .doc-grid { grid-template-columns: 1fr; }
+    .thread-list { grid-template-columns: 1fr; }
+    .hero { padding: 5rem 1.5rem 4rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="hero-label">Corpus Theological &amp; Scientific · 2025–2026</p>
+  <h1>Cuvântul, Omul, <span>Lumea</span></h1>
+  <em class="hero-divider">✦</em>
+  <h1 style="font-size: clamp(1.4rem,3.5vw,2.4rem); color: var(--muted); font-weight:400;">Ordet, Mennesket, <span style="color:var(--gold)">Verden</span></h1>
+  <p class="hero-sub">Cinci documente în română și cinci în norvegiană despre Dumnezeu, om, bine și rău, geopolitică și planetă · Fem dokumenter på rumensk og fem på norsk om Gud, mennesket, godt og ondt, geopolitikk og planeten</p>
+</header>
+
+<!-- ═══ ROMÂNĂ ═══ -->
+<section class="corpus-section">
+  <div class="section-header">
+    <span class="section-flag">🇷🇴</span>
+    <div>
+      <p class="section-title">Corpusul în Limba Română</p>
+      <p class="section-subtitle">Cinci documente · Biblia de la București, 1688 · Texte complete cu note de onestitate</p>
+    </div>
+  </div>
+
+  <div class="doc-grid">
+    <a class="doc-card c1" href="01-la-inceput-era-cuvantul-ro.html">
+      <p class="doc-num">Documentul I</p>
+      <p class="doc-title">La Început era Cuvântul</p>
+      <p class="doc-subtitle">Dumnezeu, Creația și Știința — un dialog între revelație și descoperire</p>
+      <div class="doc-chapters">
+        <span>Treimea</span><span>Înțelepciunea</span><span>Fine-tuning</span><span>ADN</span><span>Geneza vs. știința</span><span>Marea Neagră</span><span>Peștera Movile</span><span>Morala</span><span>Conștiința</span>
+      </div>
+      <p class="doc-arrow">Citește documentul →</p>
+    </a>
+
+    <a class="doc-card c2" href="02-ce-este-omul-ro.html">
+      <p class="doc-num">Documentul II</p>
+      <p class="doc-title">Ce este Omul</p>
+      <p class="doc-subtitle">Trup, suflet, duh, limbaj și muzică — o anatomie a ființei umane văzute din interior</p>
+      <div class="doc-chapters">
+        <span>Suflarea/neshamah</span><span>Chip și asemănare</span><span>Minte și inimă</span><span>Legea Zipf</span><span>Ebraica</span><span>Muzica/Bach</span><span>Moarte și Înviere</span>
+      </div>
+      <p class="doc-arrow">Citește documentul →</p>
+    </a>
+
+    <a class="doc-card c3" href="03-binele-raul-mintea-omului-ro.html">
+      <p class="doc-num">Documentul III</p>
+      <p class="doc-title">Binele, Răul și Mintea Omului</p>
+      <p class="doc-subtitle">Origine, mecanism și antidot — o analiză cinstită a celei mai vechi bătălii</p>
+      <div class="doc-chapters">
+        <span>Originea răului</span><span>Satana</span><span>Căderea</span><span>Arendt/Milgram</span><span>Creierul</span><span>Inima</span><span>Propaganda rusă</span><span>Antidotul</span>
+      </div>
+      <p class="doc-arrow">Citește documentul →</p>
+    </a>
+
+    <a class="doc-card c4" href="04-lumea-in-care-traim-ro.html">
+      <p class="doc-num">Documentul IV</p>
+      <p class="doc-title">Lumea în care trăim</p>
+      <p class="doc-subtitle">Geopolitică, imperiu și planul lui Dumnezeu — o radiografie fără propagandă</p>
+      <div class="doc-chapters">
+        <span>Radiografia 2026</span><span>Căderea imperiilor</span><span>Isus și puterea</span><span>Israel/Gaza</span><span>Factorii păcii</span><span>Actorii ascunși</span><span>Planul lui Dumnezeu</span>
+      </div>
+      <p class="doc-arrow">Citește documentul →</p>
+    </a>
+
+    <a class="doc-card c5" href="05-planeta-si-romania-ro.html" style="grid-column: 1 / -1;">
+      <p class="doc-num">Documentul V</p>
+      <p class="doc-title">Planeta și România</p>
+      <p class="doc-subtitle">Creația ca responsabilitate și tezaurul ascuns — de la ecosisteme la un pământ care supraviețuiește</p>
+      <div class="doc-chapters">
+        <span>Pământul viu</span><span>Aer, apă, sol</span><span>Furnici și albine</span><span>Carpații</span><span>Bogățiile României</span><span>Fauna</span><span>Peștera Movile</span><span>Responsabilitate</span>
+      </div>
+      <p class="doc-arrow">Citește documentul →</p>
+    </a>
+  </div>
+</section>
+
+<!-- ═══ NORVEGIANĂ ═══ -->
+<section class="corpus-section">
+  <div class="section-header">
+    <span class="section-flag">🇳🇴</span>
+    <div>
+      <p class="section-title">Korpuset på Norsk</p>
+      <p class="section-subtitle">Fem dokumenter · Tilpasset norsk publikum · Med norske filosofiske og kulturelle referanser</p>
+    </div>
+  </div>
+
+  <div class="doc-grid">
+    <a class="doc-card c1" href="01-i-begynnelsen-var-ordet-no.html">
+      <p class="doc-num">Dokument I</p>
+      <p class="doc-title">I Begynnelsen var Ordet</p>
+      <p class="doc-subtitle">Gud, skaperverket og vitenskapen — en samtale mellom åpenbaring og oppdagelse</p>
+      <div class="doc-chapters">
+        <span>Treenigheten</span><span>Visdommen</span><span>Fine-tuning/Hoyle</span><span>DNA</span><span>Genesis</span><span>Svartehavet</span><span>Moral</span><span>Bevissthet</span>
+      </div>
+      <p class="doc-arrow">Les dokumentet →</p>
+    </a>
+
+    <a class="doc-card c2" href="02-hva-er-mennesket-no.html">
+      <p class="doc-num">Dokument II</p>
+      <p class="doc-title">Hva er Mennesket</p>
+      <p class="doc-subtitle">Kropp, sjel, ånd, språk og musikk — en anatomie av menneskenaturen sett innenfra</p>
+      <div class="doc-chapters">
+        <span>Livspusten</span><span>Guds bilde</span><span>Sinn og hjerte</span><span>Zipfs lov</span><span>Hebraisk</span><span>Grieg/musikk</span><span>Død og Oppstandelse</span>
+      </div>
+      <p class="doc-arrow">Les dokumentet →</p>
+    </a>
+
+    <a class="doc-card c3" href="03-det-gode-det-onde-no.html">
+      <p class="doc-num">Dokument III</p>
+      <p class="doc-title">Det Gode, det Onde og Menneskesinnet</p>
+      <p class="doc-subtitle">Opprinnelse, mekanisme og motgift — en ærlig analyse av den eldste kampen</p>
+      <div class="doc-chapters">
+        <span>Ondskapens opprinnelse</span><span>Satan</span><span>Fallet</span><span>Arendt/Milgram</span><span>Hjernen</span><span>Hjertet</span><span>Propaganda</span><span>Motgiften</span>
+      </div>
+      <p class="doc-arrow">Les dokumentet →</p>
+    </a>
+
+    <a class="doc-card c4" href="04-verden-vi-lever-i-no.html">
+      <p class="doc-num">Dokument IV</p>
+      <p class="doc-title">Verden Vi Lever I</p>
+      <p class="doc-subtitle">Geopolitikk, imperium og Guds plan — med Norges særlige rolle som fredsmekler</p>
+      <div class="doc-chapters">
+        <span>Røntgen 2026</span><span>Imperienes fall</span><span>Jesus og makt</span><span>Israel/Gaza</span><span>Norges rolle</span><span>Skjulte aktører</span><span>Guds plan</span>
+      </div>
+      <p class="doc-arrow">Les dokumentet →</p>
+    </a>
+
+    <a class="doc-card c5" href="05-planeten-og-romania-no.html" style="grid-column: 1 / -1;">
+      <p class="doc-num">Dokument V</p>
+      <p class="doc-title">Planeten og Romania</p>
+      <p class="doc-subtitle">Skaperverket som ansvar og den skjulte skatten — med norske paralleller (Grieg, Næss, allemannsretten)</p>
+      <div class="doc-chapters">
+        <span>Levende jord</span><span>Luft, vann, jord</span><span>Maur og bier</span><span>Karpatene</span><span>Romanias rikedommer</span><span>Fauna</span><span>Movile-grotten</span><span>Norge og Romania</span><span>Ansvar</span>
+      </div>
+      <p class="doc-arrow">Les dokumentet →</p>
+    </a>
+  </div>
+</section>
+
+<!-- ═══ FIRE TEMATICE ═══ -->
+<section class="threads-section">
+  <p class="threads-title">Legăturile ascunse — firele tematice care leagă toate documentele</p>
+  <div class="thread-list">
+    <div class="thread-item">
+      <strong>Muzică ↔ Logos Creator</strong>
+      Raportul 2:1 al octavei este același tip de relație matematică perfectă ca și constantele cosmice din fine-tuning. Frumosul și raționalul sunt înscrise în realitate de aceeași Minte. (Doc I ↔ Doc II)
+    </div>
+    <div class="thread-item">
+      <strong>Limbă originară ↔ Restaurarea din Apocalipsă</strong>
+      Toți copiii se nasc cu capacitatea tuturor limbilor posibile — Babel nu a distrus capacitatea, a fragmentat-o. Restaurarea promisă nu este uniformizare, ci transparența dragostei. (Doc II ↔ Doc I)
+    </div>
+    <div class="thread-item">
+      <strong>Peștera Movile ↔ Izvoarele Adâncului</strong>
+      „Cel fără fund pre cel fără fund cheamă" — Marea Neagră, râul subteran și Peștera Movile formează un triptic al adâncului viu. România poartă toate trei. (Doc I ↔ Doc V)
+    </div>
+    <div class="thread-item">
+      <strong>Inima cardiologică ↔ Inima biblică</strong>
+      40.000 de neuroni în inimă, câmp electromagnetic de 60× mai puternic decât creierul — știința cardiologică a confirmat fără să caute că inima biblică nu este metaforă. (Doc II ↔ Doc III)
+    </div>
+    <div class="thread-item">
+      <strong>Căderea ↔ Fragmentarea Babel</strong>
+      Prima cădere a început cu un cuvânt distorsionat. La Babel, limbile s-au fragmentat. Ambele sunt deteriorări ale relației omului cu adevărul și cu celălalt. (Doc II ↔ Doc III)
+    </div>
+    <div class="thread-item">
+      <strong>Crucea ↔ Căderea imperiilor</strong>
+      Logica Crucii este inversul logicii imperiale: iubire care acceptă moartea pentru a restaura viața. Imperiile care aleg forța brută cad. Mesajul Celui răstignit durează 2.000 de ani. (Doc IV ↔ Doc I)
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Corpus teologic, științific și geopolitic · Română și Norvegiană · 2025–2026</p>
+  <p style="margin-top:.5rem; font-size:.75rem; opacity:.6;">10 documente · ~120.000 de cuvinte · Biblia de la București 1688 (RO) · Norsk standardoversettelse (NO)</p>
+</footer>
+
+</body>
+</html>

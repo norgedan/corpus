@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planeta și România — Creația ca responsabilitate și tezaurul ascuns</title>
+<style>
+  :root {
+    --bg:        #0f1117;
+    --surface:   #181c27;
+    --border:    #2a2f42;
+    --gold:      #c9a84c;
+    --gold-dim:  #8a6e30;
+    --teal:      #4a9e9e;
+    --green:     #4a9e6a;
+    --green-dim: #2d6645;
+    --text:      #dde1ec;
+    --muted:     #7a8199;
+    --chapter-w: 740px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Georgia','Times New Roman',serif; font-size: 1.05rem; line-height: 1.82; }
+  .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 4rem 2rem; background: radial-gradient(ellipse at 50% 40%, #0f1a12 0%, #0f1117 70%); border-bottom: 1px solid var(--border); }
+  .hero-series { font-size: .78rem; letter-spacing: .18em; color: var(--gold-dim); text-transform: uppercase; margin-bottom: 2rem; }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3.6rem); font-weight: 700; line-height: 1.15; color: #fff; margin-bottom: 1rem; max-width: 820px; }
+  .hero h1 span { color: var(--green); }
+  .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 580px; margin: 0 auto 2.4rem; font-style: italic; }
+  .hero-verse { border-left: 3px solid var(--green); padding: .8rem 1.4rem; color: var(--text); font-style: italic; font-size: 1rem; max-width: 540px; margin: 0 auto 2.8rem; text-align: left; line-height: 1.7; }
+  .hero-verse cite { display: block; font-style: normal; font-size: .82rem; color: var(--gold-dim); margin-top: .5rem; }
+  .toc-hint { font-size: .82rem; color: var(--muted); margin-top: .5rem; }
+  nav.doc-nav { position: sticky; top: 0; z-index: 100; background: rgba(15,17,23,.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); padding: .6rem 0; }
+  .nav-inner { max-width: var(--chapter-w); margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+  .nav-inner span { font-size: .72rem; color: var(--muted); margin-right: .3rem; }
+  nav.doc-nav a { font-size: .75rem; color: var(--muted); text-decoration: none; padding: .25rem .55rem; border-radius: 4px; transition: color .2s, background .2s; }
+  nav.doc-nav a:hover { color: var(--green); background: rgba(74,158,106,.08); }
+  .chapter { max-width: var(--chapter-w); margin: 0 auto; padding: 5rem 1.5rem 3rem; }
+  .chapter + .chapter { padding-top: 3.5rem; }
+  .ch-header { margin-bottom: 2.4rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--border); }
+  .ch-num { font-size: .72rem; letter-spacing: .16em; color: var(--gold-dim); text-transform: uppercase; margin-bottom: .6rem; }
+  .ch-title { font-size: clamp(1.4rem, 3.5vw, 2rem); font-weight: 700; color: #fff; line-height: 1.22; }
+  .ch-title em { color: var(--green); font-style: normal; }
+  .chapter p { margin-bottom: 1.3rem; }
+  .chapter h3 { font-size: 1.2rem; color: var(--green); margin: 2.2rem 0 .9rem; font-weight: 600; }
+  .chapter h4 { font-size: 1rem; color: var(--teal); margin: 1.8rem 0 .7rem; font-weight: 600; }
+  .verse { border-left: 3px solid var(--gold); background: rgba(201,168,76,.05); padding: 1rem 1.4rem; margin: 1.8rem 0; border-radius: 0 6px 6px 0; font-style: italic; color: #e8dfc8; line-height: 1.75; }
+  .verse cite { display: block; font-style: normal; font-size: .8rem; color: var(--gold-dim); margin-top: .6rem; }
+  .science-box { background: rgba(74,158,106,.07); border: 1px solid rgba(74,158,106,.25); border-radius: 8px; padding: 1.3rem 1.5rem; margin: 1.8rem 0; }
+  .science-box .label { font-size: .72rem; letter-spacing: .14em; color: var(--green); text-transform: uppercase; margin-bottom: .6rem; }
+  .romania-box { background: rgba(201,168,76,.07); border: 1px solid rgba(201,168,76,.25); border-radius: 8px; padding: 1.3rem 1.5rem; margin: 1.8rem 0; }
+  .romania-box .label { font-size: .72rem; letter-spacing: .14em; color: var(--gold); text-transform: uppercase; margin-bottom: .6rem; }
+  .red-thread { border-left: 4px solid var(--gold); background: rgba(201,168,76,.08); padding: 1rem 1.4rem; margin: 2rem 0; border-radius: 0 8px 8px 0; font-style: italic; color: #e8dfc8; }
+  .red-thread strong { color: var(--gold); font-style: normal; }
+  .hidden-link { background: rgba(201,168,76,.06); border: 1px dashed var(--gold-dim); border-radius: 8px; padding: 1rem 1.4rem; margin: 2rem 0; font-size: .93rem; }
+  .hidden-link .label { font-size: .7rem; letter-spacing: .14em; color: var(--gold-dim); text-transform: uppercase; margin-bottom: .5rem; }
+  .divider { text-align: center; color: var(--gold-dim); font-size: 1.1rem; letter-spacing: .4em; margin: 3rem 0; opacity: .5; }
+  footer { border-top: 1px solid var(--border); padding: 2.5rem 1.5rem; text-align: center; color: var(--muted); font-size: .82rem; max-width: var(--chapter-w); margin: 4rem auto 0; }
+  @media (max-width: 600px) { .hero h1 { font-size: 1.8rem; } .chapter { padding: 3rem 1rem 2rem; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="hero-series">Corpusul · Documentul V din V</p>
+  <h1>Planeta și <span>România</span></h1>
+  <p class="hero-sub">Creația ca responsabilitate și tezaurul ascuns — de la ecosisteme la un pământ care supraviețuiește</p>
+  <blockquote class="hero-verse">
+    „Cât de felurite sünt lucrurile Tale, Doamne! Pre toate le-ai făcut cu înțelepciune; pământul iaste plin de zidirile Tale."
+    <cite>Psalmul 103:24 — Biblia de la București, 1688</cite>
+  </blockquote>
+  <p class="toc-hint">↓ Derulați pentru a citi</p>
+</header>
+
+<nav class="doc-nav">
+  <div class="nav-inner">
+    <span>Capitole:</span>
+    <a href="#pamantul-viu">Pământul viu</a>
+    <a href="#aer-apa-sol">Aer, apă, sol</a>
+    <a href="#furnici-albine">Furnici și albine</a>
+    <a href="#carpati">Carpații</a>
+    <a href="#bogatii">Bogățiile</a>
+    <a href="#fauna">Fauna</a>
+    <a href="#movile">Peștera Movile</a>
+    <a href="#responsabilitate">Responsabilitate</a>
+    <a href="#concluzie">Concluzie</a>
+  </div>
+</nav>
+
+<!-- CAP. I — PĂMÂNTUL VIU -->
+<section class="chapter" id="pamantul-viu">
+  <div class="ch-header">
+    <p class="ch-num">Capitolul I</p>
+    <h2 class="ch-title">Pământul Viu — <em>Un sistem integrat, nu o resursă inertă</em></h2>
+  </div>
+
+  <blockquote class="verse">
+    „Plin iaste pământul de mila Ta, Doamne. Iară cu Cuvântul Tău cerul s'au întocmit și cu Duhul gurii Tale toată puterea lor."
+    <cite>Psalmul 32:5-6 — Biblia de la București, 1688</cite>
+  </blockquote>
+
+  <p>Există o eroare conceptuală fundamentală care a marcat relația omului cu natura în ultimele două secole: tratarea pământului ca pe un depozit de resurse care pot fi extrase independent unele de altele. Ca și cum ai putea lua apa fără sol, solul fără microbi, microbii fără vegetație, vegetația fără insecte, insectele fără aer curat — fiecare în parte, separat, fără consecințe sistemice.</p>
+
+  <p>Biologia și ecologia modernă au demonstrat că această eroare conceptuală este nu doar greșită, ci periculoasă. Pământul nu este o colecție de resurse independente. Este un sistem viu de o complexitate uimitoare, în care fiecare element depinde de toate celelalte și în care distrugerea oricărui element produce efecte în cascadă pe care nu le putem anticipa complet.</p>
+
+  <p>Biblia vorbește despre Pământ cu o terminologie organică, nu mecanică. <em>„Plin este pământul de mila Ta."</em> Nu de resursele Tale — de mila Ta. Aceasta implică o relație, nu o exploatare. <em>„Duhul gurii Tale"</em> susține creația — Duhul care se purta pe deasupra apelor la Facere 1:2 continuă să fie prezent și activ în susținerea creației. Pământul nu este un mecanism lăsat să funcționeze singur — este o realitate în care Dumnezeu rămâne implicat, prezent, susținând.</p>
+
+  <h3>Biomasa vieții ascunse — mai mult decât ceea ce vedem</h3>
+
+  <p>O cunoaștere care schimbă perspectiva: dacă ai aduna toată biomasa viețuitoarelor de pe Pământ, ai obține o ierarhie surprinzătoare. Plantele reprezintă 82% din toată biomasa vie a Pământului — copacii, ierburile, algele. Bacteriile și ciupercile împreună formează mai mult decât toată viața animală la un loc. Și toată viața animală — de la balene la insecte, de la peștii oceanelor la oameni — reprezintă mai puțin de 1% din biomasa totală a planetei.</p>
+
+  <p>Cu alte cuvinte: planeta aceasta este, în mod copleșitor, o planetă a plantelor, bacteriilor și ciupercilor. Animalele — inclusiv noi — trăim în și din acest fundament invizibil. Fiecare masă servită la orice masă din lume a trecut, în drumul ei spre farfurie, prin mâinile invizibile ale microbilor, ciupercilor și insectelor.</p>
+
+  <div class="red-thread">
+    <strong>Firul roșu — Pământul viu:</strong> Documentul I a descris creația ca expresia bucuroasă a Înțelepciunii divine care se desfata în lucrările sale. Documentul II a descris omul ca pe o ființă în care suflarea divină a fost pusă. Dacă omul poartă în el suflarea Celui care a creat pământul — atunci relația omului cu pământul nu poate fi una de stăpân față de resursă. Trebuie să fie una de grădinar față de grădina care îl susține. (Legat de Documentul I, Capitolul I și Documentul II, Capitolul I)
+  </div>
+</section>
+
+<!-- CAP. II — AER, APĂ, SOL -->
+<section class="chapter" id="aer-apa-sol">
+  <div class="ch-header">
+    <p class="ch-num">Capitolul II</p>
+    <h2 class="ch-title">Aer, Apă, Sol — <em>Cele trei fundamente ale vieții</em></h2>
+  </div>
+
+  <h3>Aerul</h3>
+
+  <p>Atmosfera Pământului este un sistem de o delicatețe uluitoare. Oxigenul — cel care permite respirația tuturor mamiferelor — nu exista în atmosfera primară a Pământului. A apărut prin activitatea unor organisme microscopice: cianobacteriile, care au început să fotosintetizeze cu aproximativ 2,7 miliarde de ani în urmă și au transformat fundamental compoziția atmosferică a planetei.</p>
+
+  <p>Astăzi, 21% din atmosferă este oxigen. Dacă ar fi 17%, focurile naturale s-ar stinge. Dacă ar fi 25%, pădurile ar lua foc spontan. Marja în care viața complexă este posibilă este remarcabil de îngustă — și a durat miliarde de ani de activitate biologică pentru a fi atinsă și menținută.</p>
+
+  <p>Poluarea atmosferică ucide anual mai mult de 7 milioane de oameni — cifră OMS confirmată și repetată în studii independente. Nu abstracturi — oameni cu nume, cu familii, cu povești. Aerul murdar nu este un cost colateral neutru al prosperității economice. Este o alegere politică și economică ale cărei victime sunt reale.</p>
+
+  <h3>Apa</h3>
+
+  <p>Apa este substanța vie a creației. Apare în primul verset al Genezei — <em>„Duhul lui Dumnezeu să purta deasupra apei"</em>. Apare în ultimul capitol al Apocalipsei — <em>„râul apei vieții."</em> Nicio altă substanță nu traversează întreaga Scriptură cu aceeași consecvență.</p>
+
+  <p>Din punct de vedere biologic: toate procesele vieții se desfășoară în soluție apoasă sau cu participarea apei. Celula vie este în cea mai mare parte apă. ADN-ul funcționează în apă. Creierul tău este 73% apă. Fătul uman se dezvoltă în apă. Nașterea — momentul trecerii în lume — este însoțită de apă.</p>
+
+  <div class="science-box">
+    <p class="label">Apa în cifre — vulnerabilitate reală</p>
+    <p>Trei procente din apa planetei este dulce. Două treimi din aceasta este blocată în ghețari. Ceea ce rămâne pentru consum uman reprezintă mai puțin de 1% din toată apa Pământului. Și această cantitate mică este distribuită extrem de inegal și pusă sub presiune prin poluare, supraexploatare și schimbări climatice. Până în 2050, conform estimărilor ONU, 5 miliarde de oameni vor trăi în regiuni cu presiune ridicată pe resursa de apă. Conflictele viitoare pentru apă sunt deja anticipate de strategii militari.</p>
+  </div>
+
+  <h3>Solul — viața invizibilă sub picioarele noastre</h3>
+
+  <p>O lingură de sol sănătos conține mai mulți microbi decât există oameni pe Pământ. O singură sursă de câteva centimetri de sol conține: bacterii, ciuperci, protozoare, nematozi, colembole, acarieni, miriapozi, râme și sute de alte organisme. Toată această viață invizibilă transformă materia organică moartă în nutrienți accesibili plantelor, aerisește solul, menține structura lui, reglează umiditatea.</p>
+
+  <p>Agricultura industrială modernă — cu monoculturi, pesticide, erbicide și arătură repetată — ucide această viață invizibilă. Solul mort produce recoltă prin inputuri chimice externe, nu prin fertilitate proprie. Este ca diferența dintre un om hrănit natural și unul ținut în viață la perfuzie. Funcționează pe termen scurt. Pe termen lung, solul degradat produce mai puțin, necesită mai mulți inputuri, rezistă mai puțin la secetă și inundații.</p>
+
+  <p>România are unul dintre puținele soluri de cernoziom rămase în Europa — un sol format de-a lungul a mii de ani de iarbă de stepă care a murit și s-a transformat în humus. Este o resursă națională de valoare incalculabilă. Este și una dintre cele mai exportate resurse ale țării — prin vânzarea de terenuri agricole și prin exportul de produse primare care duc bogăția solului dincolo de granițe.</p>
+</section>
+
+<!-- CAP. III — FURNICI ȘI ALBINE -->
+<section class="chapter" id="furnici-albine">
+  <div class="ch-header">
+    <p class="ch-num">Capitolul III</p>
+    <h2 class="ch-title">Furnicile și Albinele — <em>Lecții de la cei mici pentru cei mari</em></h2>
+  </div>
+
+  <blockquote class="verse">
+    „Du-te la furnică, leneșule, privește căile ei și înțelepțește-te."
+    <cite>Paremiile lui Solomon 6:6 — Biblia de la București, 1688</cite>
+  </blockquote>
+
+  <p>Scriptura trimite omul la furnică pentru lecții de înțelepciune. Nu la cărți, nu la filosofi, nu la regi — la o insectă de câțiva milimetri care lucrează fără supraveghere, fără comandă, cu o precizie care depășește orice organizație umană.</p>
+
+  <h3>Furnicile — algoritm viu de inteligență colectivă</h3>
+
+  <p>O colonie de furnici este un organism colectiv de o complexitate care a inspirat sisteme de logistică globale, rețele de transport și algoritmi informatici. O colonie poate consta din milioane de indivizi, fiecare cu funcții specifice, coordonându-se prin semnale chimice — feromoni — fără niciun centru de comandă, fără niciun lider care să distribuie sarcini individuale.</p>
+
+  <p>Furnicile cultivă ciuperci — de 50 de milioane de ani. Au inventat agricultura cu 50 de milioane de ani înaintea omului. Au sisteme de sănătate publică: lucrătorii care manipulează substanțe periculoase stau în zone izolate ale coloniei pentru a proteja restul. Au sisteme de înmormântare: morții sunt transportați în zone specifice, departe de colonie. Au sisteme de ventilație pentru cimitirele subterane.</p>
+
+  <p>Mușuroaiele africane ale termiților (care funcționează după principii similare furnicilor) mențin o temperatură interioară constantă de 30°C, indiferent de temperatura externă — fie că este 42°C ziua, fie 3°C noaptea. Această termostatare se realizează printr-un sistem de canale de ventilație de o precizie remarcabilă, care a inspirat designul clădirilor cu eficiență energetică maximă.</p>
+
+  <h3>Albinele — polinizatoarele de care depinde hrana omenirii</h3>
+
+  <p>Aproximativ 75% din culturile alimentare ale lumii depind, total sau parțial, de polinizarea insectelor — în mare parte albine. Fructe, legume, nuci, semințe — toate depind de această relație simbiotică veche de milioane de ani.</p>
+
+  <p>Din 2006, apicultorii din toată lumea raportează un fenomen pe care l-au numit „prăbușirea coloniei": albinele nu mor în stupi, pur și simplu dispar. Revin din căutare de hrană și nu mai găsesc drumul înapoi la stup. Se pierd.</p>
+
+  <p>Cauza principală identificată de cercetători: neonicotinoidele — o clasă de pesticide care atacă sistemul nervos al insectelor, perturbând orientarea. Sunt insecticide sistemice, absorbite de plante și prezente în toată planta, inclusiv în flori și în polen. Albina care vizitează floarea primește o doză subletală — nu moare imediat, ci îsi pierde capacitatea de navigație.</p>
+
+  <div class="science-box">
+    <p class="label">Urgența datelor</p>
+    <p>40% din speciile de insecte polinizatoare sunt în declin la nivel global, conform unui studiu publicat în revista Biological Conservation. Rata de dispariție a insectelor este de 8 ori mai mare decât rata de dispariție a mamiferelor, a păsărilor sau a reptilelor. O lume fără insecte ar pierde în câteva decenii bazele sistemului alimentar global. Aceasta nu este catastrofism — este extrapolarea datelor existente.</p>
+  </div>
+
+  <p>Dacă ar dispărea toate insectele, am pierde nu doar hrana — am pierde solul, pentru că descompunerea materiei organice depinde de insecte. Am pierde păsările, pentru că 80% din speciile de păsări se hrănesc cu insecte. Am pierde peștii de apă dulce, pentru că se hrănesc cu insecte acvatice. Colapsul ar fi sistemic și rapid.</p>
+
+  <div class="red-thread">
+    <strong>Firul roșu — Insectele:</strong> Documentul I a descris creația ca un sistem de o precizie uimitoare, calibrat cu atenție pentru a permite viața. Insectele sunt o componentă-cheie a acestui calibrare. A le elimina nu este o alegere ținând de preferință — este o decizie cu consecințe sistemice pe care nu le putem anticipa complet și pe care nu le putem reversa rapid. Înțelepciunea biblică — „Du-te la furnică, leneșule, și înțelepțește-te" — include și înțelepciunea de a nu distruge ce nu înțelegem deplin.
+  </div>
+</section>
+
+<!-- CAP. IV — CARPAȚII -->
+<section class="chapter" id="carpati">
+  <div class="ch-header">
+    <p class="ch-num">Capitolul IV</p>
+    <h2 class="ch-title">Carpații — <em>Coloana vertebrală a Europei Centrale</em></h2>
+  </div>
+
+  <p>Carpații sunt cel mai lung lanț muntos din Europa Centrală și de Est — 1.500 de kilometri de la granița Republicii Cehe până în nordul Serbiei. Dar România poartă cea mai mare parte a lor: aproximativ 910 kilometri de creste, văi, păduri și ecosisteme montane se întind pe teritoriul țării.</p>
+
+  <p>Ceea ce face Carpații românești unici la nivel european nu este înălțimea lor — Alpii sunt mai înalți, Pirineii sunt mai impozanți. Este ceea ce au păstrat: pădurile virgine și cvasivirgine care nu există aproape nicăieri altundeva în Europa.</p>
+
+  <h3>Pădurile virgine — cel mai vechi ecosistem forestier al Europei</h3>
+
+  <p>Cea mai mare suprafață de păduri virgine din Europa în afara Rusiei se află în România. Aproximativ 500.000 de hectare de pădure neatinsă sau minimim perturbată — păduri în care copacii mor de bătrânețe și putrezesc pe loc, generând habitatul unor specii care nu supraviețuiesc în păduri gestionate. Păduri în care există copaci de 400, 500, chiar 600 de ani.</p>
+
+  <p>Aceste păduri sunt mai mult decât priveliște. Sunt rezervoare de carbon, regulatori de climă locală, surse de apă curată, habitate pentru specii care nu au alternativă. Un hectar de pădure virgină stochează de 1,5 ori mai mult carbon decât un hectar de pădure tânără gestionată.</p>
+
+  <div class="romania-box">
+    <p class="label">Provocarea reală</p>
+    <p>România a pierdut, conform Greenpeace România și rapoartelor WWF, sute de mii de hectare de pădure prin defrișări ilegale în ultimele două decenii — inclusiv în zone desemnate ca protejate. Tăierile ilegale nu sunt o anomalie a sistemului — sunt o parte a unui sistem în care interesele economice pe termen scurt bat interesele ecologice pe termen lung. Aceasta nu este o critică adresată României ca excepție — este o realitate comună tuturor țărilor în curs de dezvoltare confruntate cu presiunea economică imediată versus sustenabilitatea pe termen lung.</p>
+  </div>
+
+  <h3>Munții ca sursă de apă</h3>
+
+  <p>Toate marile râuri ale României — Siretul, Prutul, Mureșul, Oltul, Jiul, Argeșul, Ialomița — izvorăsc din Carpați. Carpații sunt nu doar un lanț muntos — sunt sursele de apă ale jumătate din Europa de Est. Pădurile din bazinele hidrografice reglează debitul râurilor, reduc viiturile și asigură continuitatea debitului în perioade secetoase.</p>
+
+  <p>Defrișarea bazinelor montane nu ucide doar arborii — perturbă regimul hidrologic al întregii câmpii din aval. Inundațiile tot mai frecvente și tot mai distructive din câmpia munteană a Olteniei și Munteniei nu sunt fără legătură cu ce s-a întâmplat decenii de-a rândul în munți.</p>
+</section>
+
+<!-- CAP. V — BOGĂȚIILE -->
+<section class="chapter" id="bogatii">
+  <div class="ch-header">
+    <p class="ch-num">Capitolul V</p>
+    <h2 class="ch-title">Bogățiile ascunse ale României — <em>Un inventar incomplet al unui tezaur real</em></h2>
+  </div>
+
+  <p>România are o reputație pe care nu și-a construit-o cu grijă: o țară săracă, un stat al eșecului instituțional, o destinație de emigrație. Aceasta este o realitate politică și administrativă reală. Dar este incompletă dacă nu este pusă alături de o altă realitate: România este una dintre cele mai bogate țări din Europa în resurse naturale, biologice și culturale — o bogăție pe care nu a știut să o valorifice în beneficiul cetățenilor săi.</p>
+
+  <div class="romania-box">
+    <p class="label">Ce are România — un inventar</p>
+    <p><strong>Aur și argint</strong>: România are unele dintre cele mai mari rezerve de aur neexploatat din Europa, în special în zona Munților Apuseni (Roșia Montană). Dezbaterea despre exploatarea lor — cu consecințe ecologice grave — continuă.</p>
+    <p style="margin-top:.7rem"><strong>Petrol și gaze</strong>: România a fost prima țară din lume cu o industrie petrolieră organizată (1857, înainte de Pennsylvania). Rezervele de gaze din Marea Neagră — perimetrul Neptun Deep — sunt estimate la 42-84 de miliarde de metri cubi, potențial suficiente pentru a schimba ecuația energetică a regiunii.</p>
+    <p style="margin-top:.7rem"><strong>Lemn</strong>: Fondul forestier reprezintă 29% din suprafața țării. Exploatat corect și sustenabil, este o resursă regenerabilă de valoare imensă. Exploatat prin defrișări masive și ilegale, devine o datorie față de generațiile viitoare.</p>
+    <p style="margin-top:.7rem"><strong>Sol agricol de cernoziom</strong>: Câmpia Română și câmpia Moldovei sunt acoperite de un sol dintre cele mai fertile din lume — comparabil cu cel din Ucraina sau din Midwest-ul american.</p>
+    <p style="margin-top:.7rem"><strong>Ape termale și minerale</strong>: România are una dintre cele mai mari densități de izvoare minerale din Europa — sute de stațiuni balneare, unele cu tradiții de mii de ani, exploatate neuniform și adesea neglijate.</p>
+    <p style="margin-top:.7rem"><strong>Biodiversitate</strong>: Delta Dunării, Munții Carpați, Dobrogea — trei ecosisteme complet diferite în aceeași țară, fiecare cu specii unice sau rare în Europa.</p>
+  </div>
+
+  <p>Un singur exemplu ilustrează tragedia acestei bogății nevalorificată: Delta Dunării este una dintre cele mai mari și mai bine conservate delte din Europa. Este habitat pentru peste 300 de specii de păsări, inclusiv pelicani, egrete, cormorani. Atrage ecoturiști din toată lumea. Și jumătate din ea este situată pe teritoriul României.</p>
+
+  <p>Și totuși, comunitățile care trăiesc în Deltă sunt printre cele mai sărace din țară. Bogăția ecosistemului și sărăcia oamenilor care trăiesc în el sunt nu un paradox, ci o eșec de politici publice: incapacitatea sistematică de a transforma valoarea naturală în bunăstare locală fără a o distruge în proces.</p>
+</section>
+
+<!-- CAP. VI — FAUNA -->
+<section class="chapter" id="fauna">
+  <div class="ch-header">
+    <p class="ch-num">Capitolul VI</p>
+    <h2 class="ch-title">Fauna — <em>Cei care au supraviețuit acolo unde alții au dispărut</em></h2>
+  </div>
+
+  <p>România are cea mai mare populație de urși bruni din Europa în afara Rusiei. Are lupi, râși, oi sălbatice, mistreți — specii care au dispărut din majoritatea țărilor Europei occidentale cu decenii sau secole în urmă. Aceasta nu este o coincidență — reflectă suprafețe mari de pădure neîntreruptă, densitate umană mai mică în zonele montane și, paradoxal, subdezvoltarea economică care a lăsat natura relativ neperturbată în anumite zone.</p>
+
+  <h4>Ursul brun — simbol și problemă reală</h4>
+  <p>Populația de urși din Carpații românești este estimată la 6.000-8.000 de exemplare. Este atât o realizare remarcabilă în conservarea faunei europene, cât și o problemă reală: urșii intră în conflict cu comunitățile umane din ce în ce mai des, pe măsură ce habitatul lor se fragmentează și sursele naturale de hrană devin mai rare sau mai impredictibile din cauza schimbărilor climatice. Managementul acestui conflict necesită politici complexe, nu soluții simple.</p>
+
+  <h4>Rândunica de mal — un emigrant fidelității</h4>
+  <p>Delta Dunării găzduiește cea mai mare colonie de pelicani creți din Europa — o specie cu mai puțin de 1.000 de perechi reproductoare la nivel global. Aceasta înseamnă că o parte semnificativă din toată populația mondială cuibărește în delta României. O responsabilitate globală, nu locală.</p>
+
+  <h4>Sturionii — moștenitorii oceanului preistoric</h4>
+  <p>Dunărea a fost, până în secolul XX, unul dintre ultimele habitate majore ale sturionilor în Europa — pești care au supraviețuit timp de 200 de milioane de ani și sunt mai vechi decât dinozaurii. Morunul poate atinge 6 metri lungime și 1.000 de kg. Astăzi, sturionii dunăreni sunt în pragul dispariției din cauza barajelor care le blochează migrația spre locurile de reproducere, a pescuitului excesiv și a poluării.</p>
+
+  <p>România a interzis pescuitul comercial al sturionilor în 2016 și este parte a unor programe de repopulare. Dar fără o abordare coordonată la nivelul tuturor țărilor riverane Dunării, eforturile naționale sunt insuficiente.</p>
+</section>
+
+<!-- CAP. VII — PEȘTERA MOVILE -->
+<section class="chapter" id="movile">
+  <div class="ch-header">
+    <p class="ch-num">Capitolul VII</p>
+    <h2 class="ch-title">Peștera Movile — <em>5,5 milioane de ani de viață în întuneric, lângă Mangalia</em></h2>
+  </div>
+
+  <blockquote class="verse">
+    „De mă voi sui la ceriu, acolo ești. De mă voi pogorî în iad, de față ești."
+    <cite>Psalmul 138:8 — Biblia de la București, 1688</cite>
+  </blockquote>
+
+  <p>Lângă malul Mării Negre, la câțiva kilometri de Mangalia, la câțiva zeci de metri sub pământul Dobrogei, se află poate cea mai remarcabilă descoperire biologică a Europei din ultimii o sută de ani. O peșteră care nu ar trebui să existe — sau mai bine spus, o lume vie care nu ar trebui să existe, în condiții în care viața nu are ce căuta.</p>
+
+  <h3>Descoperirea</h3>
+
+  <p>Peștera Movile a fost descoperită în 1986, când un geolog fora sondaje de teren pentru construcția unui nou cartier în zona Mangalia. Sonda a dat într-un gol subteran și din el a ieșit aer cu hidrogen sulfurat — gazul otrăvitor al mlaștinilor și vulcanilor. Biologii chemați de urgență au coborât echipați cu măști de oxigen și au rămas fără grai.</p>
+
+  <p>Peștera era plină de viață. Scorpioni, păianjeni, miriapozi, izopode, viermi, bacterii — o întreagă lume biologică funcțională. Dar niciuna dintre speciile văzute nu era în nicio carte. Erau cu totul necunoscute. Până la urmă, în deceniile care au urmat, cercetătorii au identificat 57 de specii endemice — adică specii care nu există nicăieri altundeva pe Pământ.</p>
+
+  <h3>Condiții extreme, viață extremă</h3>
+
+  <p>Peștera Movile este la mare adâncime. Nu primește niciun fir de lumină de la suprafață. Atmosfera ei conține 2-3% dioxid de carbon și 7-11% hidrogen sulfurat — un gaz care ucide omul în câteva minute la concentrații mari. Oxigenul este la doar 7-10% față de 21% la suprafață. Nu există nicio legătură cu suprafața pentru schimb de materie organică. Sistemul este complet izolat.</p>
+
+  <div class="science-box">
+    <p class="label">Chemosinteza — viața fără soare</p>
+    <p>Baza ecosistemului Peșterii Movile nu este fotosinteza — procesul biologic obișnuit în care plantele convertesc lumina solară în energie. Este chemosinteza: bacterii care extrag energie din oxidarea sulfului și a compușilor sulfuroși. Aceste bacterii formează covorașe vii pe suprafețele din peșteră și pe suprafața lacului subteran — și sunt baza lanțului trofic al întregului ecosistem. Bacterii → protozoare → invertebrate mari → prădători.</p>
+    <p style="margin-top:.8rem">Aceasta este o demonstrație directă că viața nu necesită în mod absolut fotosinteza și lumina solară — că energia pentru viață poate veni din chimia rocii. Aceasta a schimbat fundamental căutarea vieții pe alte planete: Marte, Europa (luna lui Jupiter) și Enceladus (luna lui Saturn) au zone subterane cu condiții similare.</p>
+  </div>
+
+  <h3>5,5 milioane de ani — cât timp a trăit acolo</h3>
+
+  <p>Analiza genetică a speciilor din peșteră și a analizelor de depozite din lacul interior sugerează că ecosistemul a funcționat izolat de suprafață de aproximativ 5,5 milioane de ani — cam de când Marea Mediteranee s-a secat și s-a reumplut, de când Bosforul se forma și se forma din nou. Între timp, deasupra, civilizațiile s-au ridicat și au căzut. Speciile au apărut și au dispărut. Și în această peșteră, 5,5 milioane de ani de evoluție în izolare perfectă au produs organisme cu trăsături unice — organe senzoriale hiperdezvolate, absența totală a pigmentului, structuri corpului adaptate la densitatea redusă a oxigenului.</p>
+
+  <div class="hidden-link">
+    <p class="label">Legătură ascunsă — Peștera Movile și Izvoarele Adâncului</p>
+    <p>Documentul I a descris Psalmul 41 — „Cel fără fund pre cel fără fund cheamă" — și a vorbit despre adâncurile Mării Negre și râul subteran de pe fundul ei. Peștera Movile este continuarea terestră a aceluiași tipar: adâncul cheamă adâncul, și în adânc există viață pe care omul nu o cunoaște. <em>„De mă voi pogorî în iad, de față ești"</em> — Psalmistul știa, în limbaj poetic, ceea ce biologia a confirmat în 1986: chiar și acolo unde omul nu gândea că există viață, Creatorul a scris viață. Chiar și acolo. (Legat de Documentul I, Capitolul VI)</p>
+  </div>
+</section>
+
+<!-- CAP. VIII — RESPONSABILITATE -->
+<section class="chapter" id="responsabilitate">
+  <div class="ch-header">
+    <p class="ch-num">Capitolul VIII</p>
+    <h2 class="ch-title">Responsabilitate — <em>Ce spune Scriptura despre relația omului cu creația</em></h2>
+  </div>
+
+  <blockquote class="verse">
+    „Și au luat Dumnezău pre omul cel ce au zidit și au pus pre el în grădina Edenului ca s'o lucreze și s'o păzească."
+    <cite>Facerea 2:15 — Biblia de la București, 1688</cite>
+  </blockquote>
+
+  <p>Două verbe, două mandatele: <em>lucra</em> și <em>păzi</em>. Nu un singur verb — două. Nu stăpânire, nu exploatare, nu abstinență totală — ci lucru și pază simultane. Un grădinar care lucrează grădina fără să o păzească devine exploatator. Un grădinar care o păzește fără să o lucreze devine conservator pasiv. Mandatul biblic combină ambele.</p>
+
+  <p>Verbul ebraic <em>abad</em>, tradus „a lucra", înseamnă literalmente „a servi" — același verb folosit pentru slujirea lui Dumnezeu. Omul servește grădina — o slujire a creației, nu o dominare a ei. Verbul <em>shamar</em>, tradus „a păzi", înseamnă a guarda, a proteja, a menține — același verb folosit pentru păzirea poruncilor divine. Grija față de creație este, în logica textului, la același nivel cu ascultarea de Dumnezeu.</p>
+
+  <h3>Schimbările climatice — datele și responsabilitatea</h3>
+
+  <p>Consensul științific este clar: temperatura medie globală a crescut cu aproximativ 1,1°C față de nivelul preindustrial. Dacă tendința actuală continuă, ne îndreptăm spre 1,5°C sau mai mult până în 2040-2050 — pragul la care schimbările devin cascade greu de inversat: topirea ghețarilor, ridicarea nivelului mărilor, frecvența evenimentelor meteorologice extreme.</p>
+
+  <p>Există voci care contestă urgența sau chiar realitatea acestor schimbări. O abordare onestă trebuie să recunoască: există incertitudini în modelele climatice, există variabilitate naturală a climei, există debate legitim despre ritmul și amplitudinea schimbărilor. Dar a nega că omul contribuie la schimbarea climatică sau că consecințele ar fi neglijabile este o pozitie care ignoră preponderența covârșitoare a dovezilor.</p>
+
+  <p>Mandatul biblic — lucrați și păziți — precede cu mii de ani dezbaterea climatică. El nu depinde de un consens științific. El este o orientare morală: ai primit o grădină în grijă. Ce faci cu ea?</p>
+
+  <h3>România și responsabilitatea creației</h3>
+
+  <p>România are, prin poziția sa geografică și prin bogățiile naturale care i-au fost date, o responsabilitate neobișnuită față de creație. Pădurile sale virgine sunt un bun comun european. Delta Dunării este un patrimoniu natural global. Peștera Movile este un laborator biologic unic pe Pământ. Solul de cernoziom din câmpie este o resursă de hrană pentru o regiune întreagă.</p>
+
+  <p>A le administra înțelept nu este o opțiune pioasă pentru creștin ecologist — este o obligație față de generațiile care vor urma și față de Cel care le-a dat în administrare. <em>„Plin este pământul de mila Ta, Doamne"</em> — și omul, în calitate de grădinar, are sarcina de a nu goli ceea ce Dumnezeu a umplut.</p>
+</section>
+
+<!-- CONCLUZIE -->
+<section class="chapter" id="concluzie">
+  <div class="ch-header">
+    <p class="ch-num">Concluzie</p>
+    <h2 class="ch-title">Pământul cântă — <em>și omul este invitat să asculte</em></h2>
+  </div>
+
+  <blockquote class="verse">
+    „Cerurile spun slava lui Dumnezău și lucrarea mâinilor lui o arată tăria."
+    <cite>Psalmul 18:1 — Biblia de la București, 1688</cite>
+  </blockquote>
+
+  <p>De la Peștera Movile — unde 5,5 milioane de ani de viață au crescut în întuneric absolut — la pădurile virgine ale Carpaților — unde copaci de 500 de ani susțin ecosisteme întregi — la furnicile care cultivă ciuperci de 50 de milioane de ani — la albinele care țin în echilibru producția alimentară globală — la sturionii care au supraviețuit dinozaurilor dar poate nu vor supraviețui industrializării umane —: pământul acesta este o mărturie vie a Celui care l-a creat cu bucurie și cu înțelepciune.</p>
+
+  <p>Mandatul adamic — <em>lucrați-o și păziți-o</em> — nu este o povară. Este o participare la actul creator. Grădinarul care îngrijește o grădină frumoasă nu face munca lui Dumnezeu — face munca lui, dar în acord cu Cel care a creat-o. Aceasta este demnitatea și responsabilitatea omului față de creație.</p>
+
+  <p>România, cu toate problemele ei politice și administrative, stă pe unul dintre cele mai remarcabile tezaure naturale ale Europei. Delta, Carpații, Peștera Movile, cernoziomul, ursul brun, sturionul, pădurile virgine — sunt daruri cu care țara aceasta a intrat în lume. Ce va face cu ele pentru generațiile care urmează este un test de caracter, nu o problemă tehnico-administrativă.</p>
+
+  <p>Pântul spune slava lui Dumnezeu. Urechea trebuie educată să audă. Inima trebuie educată să răspundă. Mâna trebuie educată să îngrijească ceea ce vocea creează.</p>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+  <p style="text-align:center; color: var(--muted); font-style:italic; font-size:1rem;">
+    Aceasta încheie corpusul în limba română.<br>
+    Cele cinci documente formează împreună un arc de la Dumnezeu la om, de la om la bine și rău, de la bine și rău la lume, de la lume la pământ. Firul care le leagă este același Duh care se purta pe deasupra apelor la început — și care susține tot ce există până la capăt.
+  </p>
+</section>
+
+<footer>
+  <p>Corpusul · Documentul V din V · Limba română</p>
+  <p style="margin-top:.5rem">Toate citatele biblice sunt extrase din <em>Biblia de la București, 1688</em>.</p>
+  <p style="margin-top:.5rem; font-size:.75rem; opacity:.6;">Corpusul conține cinci documente interconectate prin fire tematice marcate explicit. Legăturile ascunse construite între documente sunt enumerate și explicate în fiecare document.</p>
+</footer>
+
+</body>
+</html>

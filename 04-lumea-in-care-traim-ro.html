@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumea în care trăim — Geopolitică, Imperiu și Planul lui Dumnezeu</title>
+<style>
+  :root {
+    --bg:        #0f1117;
+    --surface:   #181c27;
+    --border:    #2a2f42;
+    --gold:      #c9a84c;
+    --gold-dim:  #8a6e30;
+    --teal:      #4a9e9e;
+    --rose:      #b85c5c;
+    --amber:     #d4973a;
+    --text:      #dde1ec;
+    --muted:     #7a8199;
+    --chapter-w: 740px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: 'Georgia','Times New Roman',serif; font-size: 1.05rem; line-height: 1.82; }
+  .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 4rem 2rem; background: radial-gradient(ellipse at 50% 40%, #1a1710 0%, #0f1117 70%); border-bottom: 1px solid var(--border); }
+  .hero-series { font-size: .78rem; letter-spacing: .18em; color: var(--gold-dim); text-transform: uppercase; margin-bottom: 2rem; }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3.6rem); font-weight: 700; line-height: 1.15; color: #fff; margin-bottom: 1rem; max-width: 820px; }
+  .hero h1 span { color: var(--amber); }
+  .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 580px; margin: 0 auto 2.4rem; font-style: italic; }
+  .hero-verse { border-left: 3px solid var(--amber); padding: .8rem 1.4rem; color: var(--text); font-style: italic; font-size: 1rem; max-width: 540px; margin: 0 auto 2.8rem; text-align: left; line-height: 1.7; }
+  .hero-verse cite { display: block; font-style: normal; font-size: .82rem; color: var(--gold-dim); margin-top: .5rem; }
+  .toc-hint { font-size: .82rem; color: var(--muted); margin-top: .5rem; }
+  nav.doc-nav { position: sticky; top: 0; z-index: 100; background: rgba(15,17,23,.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); padding: .6rem 0; }
+  .nav-inner { max-width: var(--chapter-w); margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+  .nav-inner span { font-size: .72rem; color: var(--muted); margin-right: .3rem; }
+  nav.doc-nav a { font-size: .75rem; color: var(--muted); text-decoration: none; padding: .25rem .55rem; border-radius: 4px; transition: color .2s, background .2s; }
+  nav.doc-nav a:hover { color: var(--amber); background: rgba(212,151,58,.08); }
+  .chapter { max-width: var(--chapter-w); margin: 0 auto; padding: 5rem 1.5rem 3rem; }
+  .chapter + .chapter { padding-top: 3.5rem; }
+  .ch-header { margin-bottom: 2.4rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--border); }
+  .ch-num { font-size: .72rem; letter-spacing: .16em; color: var(--gold-dim); text-transform: uppercase; margin-bottom: .6rem; }
+  .ch-title { font-size: clamp(1.4rem, 3.5vw, 2rem); font-weight: 700; color: #fff; line-height: 1.22; }
+  .ch-title em { color: var(--amber); font-style: normal; }
+  .chapter p { margin-bottom: 1.3rem; }
+  .chapter h3 { font-size: 1.2rem; color: var(--amber); margin: 2.2rem 0 .9rem; font-weight: 600; }
+  .chapter h4 { font-size: 1rem; color: var(--teal); margin: 1.8rem 0 .7rem; font-weight: 600; }
+  .verse { border-left: 3px solid var(--gold); background: rgba(201,168,76,.05); padding: 1rem 1.4rem; margin: 1.8rem 0; border-radius: 0 6px 6px 0; font-style: italic; color: #e8dfc8; line-height: 1.75; }
+  .verse cite { display: block; font-style: normal; font-size: .8rem; color: var(--gold-dim); margin-top: .6rem; }
+  .data-box { background: rgba(212,151,58,.07); border: 1px solid rgba(212,151,58,.25); border-radius: 8px; padding: 1.3rem 1.5rem; margin: 1.8rem 0; }
+  .data-box .label { font-size: .72rem; letter-spacing: .14em; color: var(--amber); text-transform: uppercase; margin-bottom: .6rem; }
+  .science-box { background: rgba(74,158,158,.07); border: 1px solid rgba(74,158,158,.25); border-radius: 8px; padding: 1.3rem 1.5rem; margin: 1.8rem 0; }
+  .science-box .label { font-size: .72rem; letter-spacing: .14em; color: var(--teal); text-transform: uppercase; margin-bottom: .6rem; }
+  .red-thread { border-left: 4px solid var(--gold); background: rgba(201,168,76,.08); padding: 1rem 1.4rem; margin: 2rem 0; border-radius: 0 8px 8px 0; font-style: italic; color: #e8dfc8; }
+  .red-thread strong { color: var(--gold); font-style: normal; }
+  .hidden-link { background: rgba(201,168,76,.06); border: 1px dashed var(--gold-dim); border-radius: 8px; padding: 1rem 1.4rem; margin: 2rem 0; font-size: .93rem; }
+  .hidden-link .label { font-size: .7rem; letter-spacing: .14em; color: var(--gold-dim); text-transform: uppercase; margin-bottom: .5rem; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.8rem 0; }
+  .two-col .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.1rem; }
+  .two-col .card h5 { color: var(--amber); font-size: .9rem; margin-bottom: .5rem; font-weight: 600; }
+  .two-col .card p { font-size: .87rem; line-height: 1.6; margin: 0; }
+  .divider { text-align: center; color: var(--gold-dim); font-size: 1.1rem; letter-spacing: .4em; margin: 3rem 0; opacity: .5; }
+  footer { border-top: 1px solid var(--border); padding: 2.5rem 1.5rem; text-align: center; color: var(--muted); font-size: .82rem; max-width: var(--chapter-w); margin: 4rem auto 0; }
+  @media (max-width: 600px) { .hero h1 { font-size: 1.8rem; } .chapter { padding: 3rem 1rem 2rem; } .two-col { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="hero-series">Corpusul · Documentul IV din V</p>
+  <h1>Lumea în care <span>trăim</span></h1>
+  <p class="hero-sub">Geopolitică, imperiu și planul lui Dumnezeu — o radiografie fără propagandă</p>
+  <blockquote class="hero-verse">
+    „Dreptatea înalță un neam, dar păcatul este rușinea popoarelor."
+    <cite>Paremiile lui Solomon 14:34</cite>
+  </blockquote>
+  <p class="toc-hint">↓ Derulați pentru a citi</p>
+</header>
+
+<nav class="doc-nav">
+  <div class="nav-inner">
+    <span>Capitole:</span>
+    <a href="#radiografie">Radiografia 2026</a>
+    <a href="#imperii">Căderea imperiilor</a>
+    <a href="#isus">Isus și puterea</a>
+    <a href="#israel">Israel și Gaza</a>
+    <a href="#factori">Factorii păcii</a>
+    <a href="#actori">Actorii ascunși</a>
+    <a href="#planul">Planul lui Dumnezeu</a>
+    <a href="#concluzie">Concluzie</a>
+  </div>
+</nav>
+
+<!-- CAP. I — RADIOGRAFIA -->
+<section class="chapter" id="radiografie">
+  <div class="ch-header">
+    <p class="ch-num">Capitolul I</p>
+    <h2 class="ch-title">Lumea în 2026 — <em>O radiografie fără propagandă</em></h2>
+  </div>
+
+  <p>Ca să înțelegem prezentul, trebuie să privim faptele așa cum sunt, nu așa cum le prezintă cei care au interese în a le distorsiona. Aceasta nu este o analiză neutră din punct de vedere moral — este o analiză care încearcă să numească binele bine și răul rău, fără să confunde victimele cu agresorii și fără să pretindă că toate pozițiile sunt la fel de legitime.</p>
+
+  <h3>Rusia și Ucraina — alegerea razboiului în locul reformei</h3>
+
+  <p>Din februarie 2022, invazia la scară largă a Ucrainei a produs una dintre cele mai mari catastrofe umane ale secolului. Estimările CSIS din ianuarie 2026 indică 1,2 milioane de victime militare ruse — uciși, răniți, dispăruți — cu până la 325.000 de morți. Proiectul BBC și Mediazona a documentat individual peste 200.000 de decese rusești confirmate pe nume.</p>
+
+  <div class="data-box">
+    <p class="label">Date verificate — Ucraina (surse ONU și CSIS, 2026)</p>
+    <p>Biroul ONU pentru Drepturile Omului a verificat peste 60.000 de victime civile cumulate până în aprilie 2026 — aproape 16.000 uciși și peste 44.000 răniți, cu precizarea că cifrele reale pot fi semnificativ mai mari. Ucraina a pierdut aproximativ 70% din capacitatea de generare a energiei electrice. Atacurile rusești asupra infrastructurii feroviare și energetice au produs daune de miliarde de dolari — și aceasta nu este daună colaterală, ci strategie documentată.</p>
+  </div>
+
+  <p>China privește și calculează. Exporturile sale către Rusia au atins niveluri record — miliarde în utilaje și electronice — menținând economia și industria de război rusă în funcțiune, în ciuda sancțiunilor occidentale. Simultan, China nu își sacrifică relațiile economice cu Occidentul. Joacă un joc dublu, oportunist și rece, așteptând slăbirea ordinii internaționale care ar crea spațiu pentru propriile ambiții — în primul rând față de Taiwan.</p>
+
+  <h3>Orientul Mijlociu — escaladarea din 2026</h3>
+
+  <p>Pe 28 februarie 2026, Israel și Statele Unite au lansat atacuri aeriene împotriva Iranului, vizând programul nuclear și infrastructura militară. Iranul a răspuns cu contra-atacuri împotriva Israelului, bazelor americane din regiune și infrastructurii din statele arabe. Strâmtoarea Ormuz — prin care trece 20% din petrolul mondial — a fost închisă, producând cea mai mare perturbare a aprovizionării cu energie din istoria pieței globale de petrol. Un armistițiu fragil, mediat de Pakistan, a intrat în vigoare pe 8 aprilie 2026, dar negocierile rămân dificile.</p>
+
+  <h3>Europa — trezirea dintr-un somn de trei decenii</h3>
+
+  <p>Europa s-a trezit dintr-un somn confortabil de trei decenii. Cheltuielile militare ale continentului au crescut cu 14% într-un singur an, reprezentând acum 21% din totalul global — cel mai rapid ritm din istoria postbelică. Germania a prezentat prima sa strategie militară de sine stătătoare de la al Doilea Război Mondial. Dar această reînarmare vine cu un preț social: fonduri redirecționate de la servicii publice, tensiuni interne, populații obosite de crize succesive.</p>
+
+  <p>Aceasta este lumea în care trăim. Nu o lume abstractă, ci una în care oameni reali mor în războaie reale, conduși de oameni care au ales răul în locul binelui — sau, în cel mai bun caz, calculul politic în locul conștiinței.</p>
+</section>
+
+<!-- CAP. II — CĂDEREA IMPERIILOR -->
+<section class="chapter" id="imperii">
+  <div class="ch-header">
+    <p class="ch-num">Capitolul II</p>
+    <h2 class="ch-title">De ce cad imperiile — <em>Lecția Vechiului Testament</em></h2>
+  </div>
+
+  <p>Cel mai consistent mesaj al Vechiului Testament privitor la puterea politică este acesta: nicio putere umană nu este permanentă. Fiecare imperiu care a crezut că este etern a căzut — și textul sacru documentează acest tipar cu o consecvență uimitoare, pe parcursul a mai bine de o mie de ani de istorie.</p>
+
+  <h3>Tiparul repetat — patru imperii, aceeași logică</h3>
+
+  <div class="two-col">
+    <div class="card">
+      <h5>Asiria</h5>
+      <p>Cel mai brutal imperiu al lumii antice. Dumnezeu îl numește prin Isaia „toiagul mâniei Mele". Imediat ce Asiria și-a depășit mandatul, devenind arogantă, a fost distrusă. Ninive cade în 612 î.Hr. — exact cum profetise Naum cu decenii înainte.</p>
+    </div>
+    <div class="card">
+      <h5>Babilonul</h5>
+      <p>Nebucadnețar distruge Ierusalimul în 586 î.Hr. Belsazar, nepotul său, vede mâna scriind pe perete — „Mene, Mene, Tekel, Ufarsin" — și în aceeași noapte imperiul cade în mâinile perșilor.</p>
+    </div>
+    <div class="card">
+      <h5>Persia</h5>
+      <p>Cirus îl eliberează pe Israel și permite reconstruirea Templului. El este singurul lider ne-evreu numit explicit „unsul lui Dumnezeu" în Scriptură — dovadă că Dumnezeu lucrează și prin lideri care nu Îl cunosc, când acțiunile lor se aliniază cu planul Său.</p>
+    </div>
+    <div class="card">
+      <h5>Daniel — modelul profetic</h5>
+      <p>Viziunea statuii cu cap de aur, piept de argint, pântece de aramă, picioare de fier și lut: toate imperiile umane sunt în final pulverizate de „o piatră nefăcută de mână omenească." Nici Babilonul, nici Persia, nici Grecia, nici Roma nu au durat. Nici Uniunea Sovietică.</p>
+    </div>
+  </div>
+
+  <h3>Profetul Amos — standardul moral universal</h3>
+
+  <p>Profetul Amos — cel mai direct profet social din Biblie — listează cu claritate cauzele căderii națiunilor: nedreptatea economică sistematică, corupția celor care conduc, luxul și indiferența față de suferința altora, violența împotriva civililor în timp de război.</p>
+
+  <p>Remarcabil: Amos judecă <em>toate</em> națiunile cu același standard moral — nu doar Israel. Siria, Gaza, Idumeea, Ammon sunt judecate pentru aceleași crime: deportări în masă, nerespectarea vieții civile, cruzimea sistematică. Nu există un standard pentru „noi" și altul pentru „ei". Există un standard al dreptății care se aplică universal.</p>
+
+  <blockquote class="verse">
+    „Căutați pacea cetății în care v-am dus în robie și rugați-vă Domnului pentru ea, căci de pacea ei depinde și pacea voastră."
+    <cite>Ieremia 29:7</cite>
+  </blockquote>
+
+  <p>Ieremia, scriind captivilor din Babilon, nu le cere să reziste sau să se răzbune. Le cere să caute binele comun al cetății în care trăiesc — chiar dacă acea cetate este cea care i-a subjugat. Aceasta nu este naivitate politică. Este o înțelegere profundă că ura și revanșa nu construiesc, ci distrug, inclusiv pe cel care le practică.</p>
+
+  <div class="red-thread">
+    <strong>Firul roșu — Imperiile:</strong> Puterea politică are un mandat moral. Când îl îndeplinește, este susținută. Când îl trădează — când alege violența sistematică, corupția și opresiunea ca principii de guvernare — se autodistruge. Nu întotdeauna imediat, nu fără suferință intermediară pentru cei nevinovați, dar inexorabil. Aceasta nu este pesimism — este istorie confirmată teologic.
+  </div>
+</section>
+
+<!-- CAP. III — ISUS ȘI PUTEREA -->
+<section class="chapter" id="isus">
+  <div class="ch-header">
+    <p class="ch-num">Capitolul III</p>
+    <h2 class="ch-title">Isus și Puterea — <em>O revoluție a conceptului</em></h2>
+  </div>
+
+  <p>Isus a trăit sub ocupația celui mai puternic imperiu al lumii antice — Roma. A fost ucis prin colaborarea dintre puterea religioasă locală coruptă și puterea imperială romană. Și totuși, modul în care a abordat puterea politică a reprezentat o revoluție completă a gândirii.</p>
+
+  <p>A refuzat să devină lider politic sau militar, deși mulțimile îl voiau astfel. A spus lui Pilat: <em>„Împărăția Mea nu este din lumea aceasta; dacă ar fi, slujitorii Mei s-ar fi luptat."</em> Nu a contestat existența puterii lumești — a contestat fundamentul și scopul ei.</p>
+
+  <blockquote class="verse">
+    „Fericiți cei blânzi, că ei vor moșteni pământul."
+    <cite>Matei 5:5</cite>
+  </blockquote>
+
+  <p>Logica imperială spune că pământul îl moștenesc cei puternici și violenți. Logica imperială spune că supraviețuiește cel care lovește primul și lovește mai tare. Isus inversează complet această ecuație.</p>
+
+  <p>„Iubiți pe vrăjmașii voștri" nu este o invitație la naivitate pasivă. Cercetătorii Scripturii au arătat că pasajele despre „întoarcerea celuilalt obraz", „dăruirea hainei", „mersul celor două mile" sunt de fapt acte de rezistență non-violentă demnă, nu capitulare. Ele refuză ciclul violenței fără a accepta umilința completă. Omul lovit pe obrazul drept care întoarce și celălalt obraz nu este un om care acceptă abuzul — este un om care refuză să devină ca agresorul său.</p>
+
+  <h3>Crucea — răspunsul final la suferința nevinovată</h3>
+
+  <p>Crucea este, în teologia Noului Testament, răspunsul final la întrebarea suferinței nevinovate. Dumnezeu nu privește suferința din exterior — intră în ea. Isus nu evită moartea, ci o traversează din interior, schimbând fundamental semnificația oricărei suferințe. Nu o explică teoretic — o transfigurează.</p>
+
+  <p>Aceasta este baza speranței creștine: nu o promisiune că răul nu va exista, ci certitudinea că răul nu are ultimul cuvânt. Copilul ucrainean care doarme în adăpost, copilul din Gaza care nu mai are casă — suferința lor nu este invizibilă pentru Dumnezeu. <em>„Pe viața Mea, zice Domnul Dumnezeu, că nu doresc moartea păcătosului."</em> Cu atât mai puțin dorește moartea celui nevinovat.</p>
+
+  <div class="hidden-link">
+    <p class="label">Legătură ascunsă — Crucea și căderea imperiilor</p>
+    <p>Crucea este tocmai inversul logicii imperiale: în loc de forța care impune supunerea, o iubire care acceptă moartea pentru a restaura viața. Aceasta nu este slăbiciune strategică — este structura morală a realității în care imperiile care alegeau forța brută au căzut, iar mesajul Celui răstignit continuă să transforme lumi după 2.000 de ani. Puterea autentică, în logica Scripturii, nu este capacitatea de a distruge — ci capacitatea de a construi și de a restaura. (Legat de Capitolul II — Căderea imperiilor)</p>
+  </div>
+</section>
+
+<!-- CAP. IV — ISRAEL ȘI GAZA -->
+<section class="chapter" id="israel">
+  <div class="ch-header">
+    <p class="ch-num">Capitolul IV</p>
+    <h2 class="ch-title">Israel și Gaza — <em>Două tragedii reale, un conflict fără soluții simple</em></h2>
+  </div>
+
+  <p>Conflictul din Orientul Mijlociu este poate cel mai complex și mai încărcat emoțional dintre toate conflictele analizate în această lucrare. Tocmai de aceea necesită cea mai mare grijă în prezentarea faptelor.</p>
+
+  <div class="data-box">
+    <p class="label">7 octombrie 2023 — faptele verificate</p>
+    <p>Hamas și alte grupuri armate palestiniene au ucis aproximativ 1.200 de persoane în Israel, din care cel puțin 809 civili, inclusiv femei, copii și vârstnici. Aproximativ 252 de oameni au fost răpiți și duși în Gaza ca ostateci. Crimele comise — ucidere în masă, luare de ostateci și violență sexuală — constituie crime de război și posibil crime împotriva umanității, conform experților ONU. Human Rights Watch, după 144 de interviuri și analiza a peste 280 de fotografii și videoclipuri, a concluzionat că asaltul a fost proiectat deliberat pentru a ucide civili. A fost cea mai sângeroasă zi pentru evrei de la Holocaust.</p>
+  </div>
+
+  <div class="data-box">
+    <p class="label">Răspunsul militar israelian — date verificate</p>
+    <p>Conform datelor agregate și verificate, răspunsul militar israelian în Gaza a produs peste 72.000 de morți palestinieni, din care aproximativ 80% civili și cel puțin 21.000 de copii. Un studiu publicat în revista medicală The Lancet estimează cifre și mai mari. Două treimi din clădirile Gazei au fost avariate sau distruse. Cel puțin 463 de persoane au murit din cauza foametei, inclusiv 157 de copii.</p>
+  </div>
+
+  <p>Ambele tragedii sunt reale. Ambele trebuie numite pe nume. A minimaliza suferința israelienilor din 7 octombrie în numele cauzei palestiniene este o nedreptate. A minimaliza suferința palestinienilor în numele dreptului Israelului la autoapărare este o altă nedreptate. Două nedreptăți nu produc o dreptate.</p>
+
+  <p>Greșeala strategică majoră a Israelului este că a ales eliminarea militară a Hamas ca obiectiv, fără un plan pentru ziua de după. Hamas nu este o armată convențională — este o mișcare politică cu rădăcini în disperare și sărăcie. Nu poți bombarda o ideologie. Fiecare copil ucis în Gaza produce, în inimile celor rămași, nu pace, ci motivație pentru violență viitoare. Aceasta nu este o observație pro-Hamas — este o realitate strategică documentată de istoria tuturor conflictelor asimetrice.</p>
+
+  <p>Greșeala Occidentului a fost să furnizeze arme Israelului fără condiționări reale, lăsând să se înțeleagă că dreptul internațional se aplică selectiv. Aceasta a lovit grav credibilitatea cu care același Occident condamnă Rusia pentru atacuri asupra civililor ucraineni. Când standardele morale se aplică diferențiat în funcție de cine este atacatorul, nu mai sunt standarde morale — sunt instrumente politice.</p>
+
+  <p>Soluția, oricât de dificilă, trece prin recunoașterea demnității umane a ambelor popoare și prin refuzul de a lăsa conflictul să fie controlat de extremiștii de pe ambele părți, care au interese comune în perpetuarea violenței.</p>
+</section>
+
+<!-- CAP. V — FACTORII PĂCII ȘI AI RĂZBOIULUI -->
+<section class="chapter" id="factori">
+  <div class="ch-header">
+    <p class="ch-num">Capitolul V</p>
+    <h2 class="ch-title">Factorii Păcii și ai Războiului — <em>Ce ne spun faptele</em></h2>
+  </div>
+
+  <h3>Ce alimentează războiul</h3>
+
+  <p><strong>Economia războiului.</strong> Rusia, Hamas, Iranul și sisteme similare și-au construit structuri de putere care nu supraviețuiesc fără conflict. Pacea ar însemna, pentru acești actori, pierderea puterii. Aceasta este una dintre cele mai sumbre realități ale istoriei: uneori, cei care conduc războaiele au mai mult de pierdut din pace decât din continuarea violenței.</p>
+
+  <p><strong>Lipsa de consecințe reale.</strong> Când agresorul nu pierde suficient de mult, calculează că poate continua. Rusia a calculat că Occidentul va obosi. Calculul nu este greșit din perspectivă istorică — marile democrații au tendința de a-și pierde răbdarea în conflicte prelungite.</p>
+
+  <p><strong>Aplicarea selectivă a dreptului internațional.</strong> Când Occidentul condamnă Rusia pentru civili uciși, dar finanțează fără condiții alte acțiuni militare cu victime civile masive, pierde autoritatea morală. Inconsistența morală nu este neutralitate — este o formă de complicitate cu agresorul care știe că regulile nu se aplică simetric.</p>
+
+  <p><strong>Sărăcia și disperarea structurală.</strong> Hamas există din disperarea din Gaza. Mișcarea Houthi există din disperarea din Yemen. Nicio bombă nu a rezolvat vreodată sărăcia structurală. Aceasta nu justifică terorismul — îl explică structural, ceea ce este complet diferit.</p>
+
+  <h3>Ce aduce pacea</h3>
+
+  <p><strong>Epuizarea</strong> este cel mai frecvent motiv pentru care războaiele se termină — nu victoria clară a uneia dintre părți, ci epuizarea ambelor. Rusia se apropie de limita demografică și economică, cheltuind 8% din PIB pe un război care consumă o generație de bărbați. Dar nu a atins încă limita pragului de colaps.</p>
+
+  <p><strong>Un mediator credibil</strong> este esențial pentru orice pace durabilă. Pakistan a reușit să medieze armistițiul SUA-Iran — un semn că actori neașteptați pot juca roluri importante.</p>
+
+  <p><strong>Schimbarea conducerii.</strong> Pacea în Ucraina este extrem de dificilă cât timp Putin rămâne în funcție în forma actuală a puterii sale. Pacea în Gaza este blocată parțial de interesele politice personale ale unor lideri care au mai mult de câștigat din continuarea conflictului decât din încetarea lui.</p>
+
+  <blockquote class="verse">
+    „Mila și credincioșia se întâlnesc; dreptatea și pacea se sărută."
+    <cite>Psalmul 85:10</cite>
+  </blockquote>
+
+  <p>Orice pace fără dreptate este un armistițiu temporar. Orice dreptate fără milă devine tiranie. Marile eșecuri politice ale lumii de azi vin tocmai din incapacitatea de a ține aceste două valori împreună — din alegerea fie a dreptății fără milă, fie a milei fără dreptate.</p>
+</section>
+
+<!-- CAP. VI — ACTORII ASCUNȘI -->
+<section class="chapter" id="actori">
+  <div class="ch-header">
+    <p class="ch-num">Capitolul VI</p>
+    <h2 class="ch-title">Actorii Ascunși — <em>Lumea care se reorganizează</em></h2>
+  </div>
+
+  <p>Analiza lumii contemporane ar fi incompletă fără a privi actorii care, mai puțin vizibili în titlurile de știri, modelează profund direcția globală.</p>
+
+  <h4>Japonia — actorul ignorat al momentului</h4>
+  <p>Japonia a atins în 2025 obiectivul de 2% din PIB pentru apărare — cu doi ani înainte de termen — și aduce capacități de rachete cu rază lungă în dotare operațională în 2026. Japonia are o poziție unică: este prima linie dacă China încearcă o mișcare militară împotriva Taiwanului. Pentru prima dată din 1945, își asumă din nou un rol strategic activ.</p>
+
+  <h4>Coreea de Nord — co-agresor în Ucraina</h4>
+  <p>Un fapt puțin discutat: soldați nord-coreeni au luptat alături de forțele ruse în Ucraina — ceea ce înseamnă că Phenianul este co-agresor direct în acest război, nu simplu spectator. Coreea de Sud a răspuns furnizând muniție Ucrainei și aprofundând cooperarea cu NATO.</p>
+
+  <h4>India — maestrul multi-alinierii</h4>
+  <p>India practică ceea ce numește „multi-aliniere" — o strategie deliberată și sofisticată de a nu alege tabere în mod rigid. Modi a vizitat Rusia, a participat la summitul SCO din China, a primit Putin la New Delhi și, simultan, a invitat președintele Comisiei Europene ca invitat de onoare la Ziua Republicii. India cumpără petrol rusesc ieftin, vinde echipament militar țărilor NATO, cooperează cu China economic și se aliază cu SUA strategic. Este probabil cel mai abil jucător geopolitic al momentului.</p>
+
+  <h4>Taiwan — cel mai periculos scenariu neprevăzut</h4>
+  <p>Dacă China citește conflictele simultane din Ucraina și Orientul Mijlociu ca o fereastră de oportunitate, o mișcare militară spre Taiwan ar declanșa un conflict de o magnitudine complet diferită — cu implicații pentru lanțurile globale de aprovizionare, în special în semiconductori, unde Taiwan produce o proporție covârșitoare din producția mondială.</p>
+
+  <div class="science-box">
+    <p class="label">Ceea ce unește acești actori</p>
+    <p>Lumea nu mai este bipolară sau unipolară. Este o lume a mai multor centre de putere, a intereselor multiple și adesea contradictorii, în care alianțele tradiționale sunt puse sub presiune și în care noi coaliții se formează din necesitate, nu din valori comune. Această complexitate face ca previziunile simple să fie periculoase și ca înțelepciunea — nu doar forța — să fie esențială.</p>
+  </div>
+</section>
+
+<!-- CAP. VII — PLANUL LUI DUMNEZEU -->
+<section class="chapter" id="planul">
+  <div class="ch-header">
+    <p class="ch-num">Capitolul VII</p>
+    <h2 class="ch-title">Planul lui Dumnezeu — <em>Ce putem cunoaște cu seriozitate</em></h2>
+  </div>
+
+  <p>Există o tentație — la care mulți cad — de a citi evenimentele politice actuale ca pe un calendar al profeției biblice, identificând cu precizie cine este „Fiara", care țară este „Babilonul", când va fi sfârșitul. Această tentație trebuie refuzată — nu din lipsă de credință, ci din respect față de text și față de adevărul pe care îl poartă.</p>
+
+  <p>Biblia nu ne dă un calendar al evenimentelor viitoare. Cei care pretind că știu exact ce se va întâmpla și când nu sunt sinceri cu textul. Isus Însuși a spus: <em>„Despre ziua și ceasul acela nu știe nimeni, nici îngerii din ceruri, nici Fiul, ci numai Tatăl."</em></p>
+
+  <p>Dar principiile sunt clare și consistente de la un capăt la altul al Scripturii:</p>
+
+  <h4>Nicio putere umană nu este permanentă</h4>
+  <p>Aceasta nu este pesimism, ci realitate verificată de întreaga istorie umană. Toate imperiile care au crezut că sunt eterne au căzut. Aceasta îi eliberează pe cei care trăiesc sub imperii ale răului de iluzia că situația lor este definitivă.</p>
+
+  <h4>Răul se autodistruge pe termen lung</h4>
+  <p>Nu imediat, nu fără suferință intermediară pentru cei nevinovați, dar sistemele bazate pe minciună, violență și exploatare nu sunt sustenabile. Aceasta nu este optimism naiv — este o lege a structurii morale a realității, confirmată de istoria omenirii.</p>
+
+  <h4>Suferința nevinovată nu este ultimul cuvânt</h4>
+  <p>Teologia Crucii spune că suferința nevinovată nu este în afara planului divin, dar nici nu este planul final. Copilul ucrainean care doarme în adăpost, copilul din Gaza care nu mai are casă — suferința lor nu este invizibilă pentru Dumnezeu.</p>
+
+  <h4>Responsabilitatea morală este reală și individuală</h4>
+  <p>Biblia respinge atât fatalismul — „Dumnezeu a hotărât totul, noi nu facem nimic" — cât și autonomia absolută — „noi decidem totul, Dumnezeu nu există." Există o tensiune reală între suveranitatea divină și libertatea umană — și în această tensiune se petrece istoria. Fiecare om care alege astăzi să spună adevărul, să facă dreptate, să aibă milă — acționează în sensul planului lui Dumnezeu, chiar dacă nu știe că o face.</p>
+
+  <blockquote class="verse">
+    „Din sabiile lor vor face pluguri și din sulițele lor cosoare; niciun popor nu va mai ridica sabia împotriva altuia și nu vor mai învăța războiul."
+    <cite>Isaia 2:4</cite>
+  </blockquote>
+
+  <p>Aceasta nu este o promisiune că pacea va veni automat, fără efort uman. Este o viziune despre destinația finală a istoriei, o hartă care arată încotro merge tot ceea ce este adevărat, drept și bun. Această viziune nu elimină suferința prezentă — o încadrează într-un context mai larg, în care are sens.</p>
+</section>
+
+<!-- CONCLUZIE -->
+<section class="chapter" id="concluzie">
+  <div class="ch-header">
+    <p class="ch-num">Concluzie</p>
+    <h2 class="ch-title">Firul roșu care leagă <em>totul</em></h2>
+  </div>
+
+  <blockquote class="verse">
+    „Pe viața Mea, zice Domnul Dumnezeu, că nu doresc moartea păcătosului, ci să se întoarcă de la calea lui și să trăiască."
+    <cite>Ezechiel 33:11</cite>
+  </blockquote>
+
+  <p>Am pornit de la o frază. Vom încheia cu aceeași frază, pentru că ea merită să rămână: Dumnezeu nu dorește moartea. Nu dorește război. Nu dorește suferință. A creat viața și susține viața. A creat libertatea și susține libertatea. Și plânge — la fel cum Isus a plâns pentru Ierusalim — când ființele libere pe care le-a creat aleg moartea în locul vieții.</p>
+
+  <p>Lumea de azi nu are nevoie, în primul rând, de strategii geopolitice mai inteligente — deși și acestea sunt necesare. Are nevoie de oameni care refuză să cedeze conștiința. Care spun adevărul când toată lumea minte. Care aleg mila când sistemul cere cruzime. Care construiesc în loc să distrugă.</p>
+
+  <p><em>„Dreptatea înalță un neam, dar păcatul este rușinea popoarelor."</em> — Proverbele 14:34 este o observație, nu o amenințare. Este o descriere a structurii morale a realității în care trăim — o realitate în care alegerile au consecințe, în care binele și răul nu sunt echivalente, și în care firul dintre viață și moarte trece prin inima fiecărui om, în fiecare zi.</p>
+
+  <div class="divider">✦ ✦ ✦</div>
+
+  <p style="text-align:center; color: var(--muted); font-style:italic; font-size:.93rem;">
+    Continuați cu Documentul V — <strong>Planeta și România</strong>: creația ca responsabilitate și tezaurul ascuns.
+  </p>
+</section>
+
+<footer>
+  <p>Corpusul · Documentul IV din V · Limba română</p>
+  <p style="margin-top:.5rem">Datele statistice sunt preluate din surse verificabile: CSIS, ONU, BBC/Mediazona. Citatele biblice sunt din Biblia de la București, 1688 și traduceri moderne.</p>
+</footer>
+
+</body>
+</html>
