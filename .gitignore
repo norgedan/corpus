@@ -6,7 +6,8 @@
 *.orig
 
 # scripturi de lucru locale
-*.sh
+/*.sh
+!scripts/
 
 # sistem
 .DS_Store
