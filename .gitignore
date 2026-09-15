@@ -1,0 +1,15 @@
+# backup-uri si temporare
+*.bak
+*.tmp
+*~
+*.swp
+*.orig
+
+# scripturi de lucru locale
+*.sh
+
+# sistem
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
