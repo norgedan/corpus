@@ -142,7 +142,7 @@ echo "  Cuvinte reale (fara CSS si tag-uri): $real"
 
 for f in index.html README.md; do
   [ -f "$f" ] || continue
-  declarat=$(grep -o '~[0-9][0-9.]* de cuvinte\|~[0-9][0-9.]* cuvinte' "$f" | head -1)
+  declarat=$(grep -oE '~[0-9][0-9.]* (de )?cuvinte' "$f" | head -1)
   if [ -z "$declarat" ]; then
     atentie "$f nu declara un numar de cuvinte"
     continue
