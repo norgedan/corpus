@@ -42,4 +42,4 @@ Et korpus med tolv teologiske, vitenskapelige og geopolitiske dokumenter på rum
 ---
 
 *Biblia de la București, 1688 (RO) · Norsk standardoversettelse (NO)*
-*12 documente · ~53.500 de cuvinte · 2025–2026*
+*12 documente · ~58.000 de cuvinte · 2025–2026*
