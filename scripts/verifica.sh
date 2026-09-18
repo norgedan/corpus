@@ -222,12 +222,24 @@ echo "[10] Numarul de cuvinte: real vs. declarat"
 # /<style>/,/<\/style>/ se comporta DIFERIT pe BSD fata de GNU
 # (diferenta masurata: ~2000 de cuvinte pe acelasi corpus).
 
+# Locale fixat pentru numaratoare: wc -w numara diferit pe text cu
+# diacritice in functie de locale (POSIX vs UTF-8).  Alegem primul
+# locale UTF-8 disponibil, ca sa dea identic pe orice sistem.
+LOCALE_NUM=""
+for L in C.UTF-8 en_US.UTF-8 ro_RO.UTF-8; do
+  if echo "ă" | LC_ALL="$L" wc -w >/dev/null 2>&1; then
+    LOCALE_NUM="$L"
+    break
+  fi
+done
+[ -z "$LOCALE_NUM" ] && LOCALE_NUM="C"
+
 real=$(cat [0-9][0-9]-*.html 2>/dev/null \
        | awk '/<style>/{s=1} /<\/style>/{s=0;next} !s' \
        | sed 's/<[^>]*>//g' \
-       | wc -w | tr -d ' ')
+       | LC_ALL="$LOCALE_NUM" wc -w | tr -d ' ')
 
-echo "  Cuvinte reale (fara CSS si tag-uri): $real"
+echo "  Cuvinte reale (fara CSS si tag-uri): $real   [locale: $LOCALE_NUM]"
 
 for f in index.html README.md status-proiect.html; do
   [ -f "$f" ] || continue
