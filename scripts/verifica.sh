@@ -141,7 +141,9 @@ for f in *.html; do
     problema "$f contine artefact '\">n<' — newline pierdut de sed BSD"
     gasit_artefact=1
   fi
-  if grep -q '\\n<' "$f"; then
+  # \n literal, dar NU in text care documenteaza intentionat secventa
+  # (liniile cu <code> sunt documentatie, nu artefacte)
+  if grep '\\n<' "$f" | grep -qv '<code>'; then
     problema "$f contine '\\n' literal in text"
     gasit_artefact=1
   fi

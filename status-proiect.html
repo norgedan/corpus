@@ -31,7 +31,7 @@ footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--border);color
 <body>
 <div class="container">
 <h1>Status Proiect Norgedan</h1>
-<p class="subtitle">Ce am facut, ce urmeaza — document de continuitate · 4 septembrie 2026</p>
+<p class="subtitle">Ce am facut, ce urmeaza — document de continuitate · 18 septembrie 2026</p>
 
 <h2>1. Repo-uri GitHub — toate active</h2>
 <div class="done"><span class="tag tag-done">FACUT</span>
@@ -42,19 +42,22 @@ SEO complet, Google Search Console verificat, sitemap trimis</div>
 <strong>corpus</strong> — 12 documente (6 RO + 6 NO) ~58.000 cuvinte<br>
 URL: https://norgedan.github.io/corpus/</div>
 <div class="done"><span class="tag tag-done">FACUT</span>
-<strong>corpus2</strong> — 4 documente bilingve A,B,C,D<br>
+<strong>corpus2</strong> — 8 documente bilingve A,B,C,D (~34.800 cuvinte) · SEO complet 18 sept<br>
 URL: https://norgedan.github.io/corpus2/</div>
 <div class="done"><span class="tag tag-done">FACUT</span>
-<strong>opera</strong> — Voci care nu mor / Stemmer som ikke dor<br>
+<strong>opera</strong> — Voci care nu mor / Stemmer som ikke dor (~2.800 cuvinte) · SEO complet 18 sept<br>
 URL: https://norgedan.github.io/opera/</div>
 <div class="done"><span class="tag tag-done">FACUT</span>
-<strong>limba + limba-ro-final</strong> — Limba sfasiata / Limba care nu vrea sa moara<br>
-URL: https://norgedan.github.io/limba/ si /limba-ro-final/</div>
+<strong>limba</strong> — Limba sfasiata / Det sonderrevne spraket (~8.600 cuvinte) · SEO complet 18 sept<br>
+URL: https://norgedan.github.io/limba/</div>
+<div class="done"><span class="tag tag-done">FACUT</span>
+<strong>corpus3</strong> — 12 documente (in norgedan.github.io/corpus3/) ~50.600 cuvinte<br>
+URL: https://norgedan.github.io/corpus3/</div>
 
 <h2>2. Documentele din Corpus — status</h2>
 <div class="done"><span class="tag tag-done">FACUT + IMBUNATATIT</span>
 Doc I RO+NO — La Inceput era Cuvantul / I Begynnelsen var Ordet<br>
-Adaugat: Chalmers 1995, Tononi IIT, legatura fine-tuning si morala</div>
+Adaugat: Chalmers 1995, Tononi IIT, legatura fine-tuning si morala<br>15 sept: Cap. I — unitatea Treimii ancorata in Ioan 4:24, Ioan 10:30, Matei 3:17; nasterea din Duh (Ioan 3:5,8); Duhul ca legatura de iubire (analogie augustiniana)<br>17 sept: Cap. III rescris — 31 de constante cu sursa (Lewis/Barnes/Goff, Cambridge 2025), consecinte concrete bine/rau, nota care demonteaza mitul antropic Hoyle, argumentul cazinoului (Goff), sectiune teologica noua</div>
 <div class="done"><span class="tag tag-done">FACUT + IMBUNATATIT</span>
 Doc II RO+NO — Ce este Omul / Hva er Mennesket<br>
 Adaugat: fix id duplicat, Enescu, starea intermediara / mellomtilstand</div>
@@ -73,6 +76,27 @@ Doc VI RO — Omul si Inteligenta Artificiala<br>
 <div class="done"><span class="tag tag-done">NOU — COMPLET 4 sept 2026</span>
 Doc VI NO — Mennesket og Kunstig Intelligens<br>
 Adaptat cultural: Ibsen, PST, Oljefond, Datatilsynet, allemannsretten, friluftsliv</div>
+
+<h2>2b. Infrastructura si verificare — sesiunile 15-18 septembrie</h2>
+<div class="done"><span class="tag tag-done">FACUT</span>
+<strong>SEO complet in toate repo-urile</strong><br>
+meta description unica, canonical, hreflang reciproc RO&lt;-&gt;NO (ro/nb/x-default), Open Graph, Twitter Card, lang="nb" peste tot<br>
+Reparat: opera avea hreflang="no" intr-o parte si "nb" in cealalta — legatura era rupta</div>
+<div class="done"><span class="tag tag-done">FACUT</span>
+<strong>scripts/verifica.sh v2</strong> — control automat inainte de fiecare push<br>
+12 verificari: meta SEO, canonical, reciprocitate hreflang, coerenta lang, taguri HTML, artefacte sed BSD, descrieri duplicate, sitemap, pagini orfane, numar de cuvinte, perechi RO/NO, curatenie git<br>
+Cod de iesire 1 la probleme — permite: <code>sh scripts/verifica.sh &amp;&amp; git push origin main</code></div>
+<div class="done"><span class="tag tag-done">FACUT</span>
+<strong>LICENSE (CC BY 4.0) + .gitignore</strong> in corpus, corpus2, opera, limba<br>
+.nojekyll in toate repo-urile</div>
+<div class="done"><span class="tag tag-done">FACUT</span>
+<strong>ghid-github-norgedan.html</strong> — 14 capitole, in repo norgedan.github.io cu noindex<br>
+Include: procedura completa "document nou" (cap. IV), caile clonelor locale, ritualul de curatenie Downloads, lectiile BSD (sed, grep, wc/locale, subshell), tokenul PAT, jurnalul celor trei sesiuni cu greselile si lectiile lor</div>
+<div class="done"><span class="tag tag-done">MASURAT</span>
+<strong>Cifre reale ale proiectului — 18 septembrie 2026</strong><br>
+36 documente · 154.873 cuvinte (locale UTF-8)<br>
+corpus 57.928 · corpus2 34.848 · corpus3 50.645 · limba 8.618 · opera 2.834<br>
+Anterior se declara ~220.000 — supraestimare de ~1,4x. Cifrele vechi din corpus (120.000-180.000) erau supraestimate de peste doua ori.</div>
 
 <h2>3. Documente urmatoare — planificate</h2>
 <div class="todo"><span class="tag tag-todo">URMEAZA</span>
@@ -107,21 +131,26 @@ Verifica in cateva zile daca sitemap-urile au fost procesate (erau "Nu s-a putut
 <strong>Academia.edu</strong> — incarca documentele ca lucrari de cercetare cu categorii si cuvinte cheie</div>
 
 <h2>5. Comenzi utile pentru urmatoarea sesiune</h2>
-<div class="done"><span class="tag tag-done">COMENZI</span>
-Push rapid: <code>cd ~/corpus && git add -A && git commit -m "mesaj" && git push</code><br>
-Verificare: <code>grep -n "cuvant" ~/corpus/fisier.html</code><br>
-Editare Python: <code>python3 script.py</code><br>
-Backup fisier: <code>cp fisier.html fisier.html.bak</code></div>
+<div class="cmd"><span class="tag tag-cmd">COMENZI</span>
+<strong>Clonele locale:</strong> /home/bogdan/corpus · /home/bogdan/corpus2 · /home/bogdan/norgedan.github.io · /home/bogdan/opera · /home/bogdan/limba<br><br>
+<strong>Rutina completa:</strong><br>
+<code>cd ~/corpus &amp;&amp; git pull origin main</code><br>
+<code>sh scripts/verifica.sh</code> — trebuie cod de iesire 0<br>
+<code>git status --short &amp;&amp; git diff --stat</code> — citite efectiv<br>
+<code>git add -A &amp;&amp; git commit -m "mesaj clar" &amp;&amp; git push origin main</code><br><br>
+<strong>Numarare cuvinte (locale fixat, identic pe orice sistem):</strong><br>
+<code>cat *.html | awk '/&lt;style&gt;/{s=1} /&lt;\/style&gt;/{s=0;next} !s' | sed 's/&lt;[^&gt;]*&gt;//g' | LC_ALL=C.UTF-8 wc -w</code><br><br>
+<strong>Capcane BSD (OpenBSD nu e GNU):</strong> fara <code>\n</code> in sed · fara <code>\|</code> in grep (foloseste <code>grep -E</code>) · fara <code>sed -i</code><br><br>
+<strong>Dupa orice copiere din Downloads:</strong> verifica o linie caracteristica versiunii noi — browserul salveaza al doilea exemplar ca <code>fisier(1).html</code></div>
 
 <h2>6. Cum sa incepi urmatoarea sesiune</h2>
-<div class="important"><span class="tag tag-imp">IMPORTANT</span>
-Trimite acest mesaj in chat Claude:<br><br>
-<em>"Claude, continuam proiectul Norgedan. Documentele sunt la https://norgedan.github.io/corpus/ — am 12 documente complete. Urmeaza Doc VII — Familia si Societatea. Discutam structura mai intai, la fel ca la Doc VI."</em><br><br>
-Ataseaza acest fisier HTML sau copiaza continutul sau pentru context complet.</div>
+<div class="important"><span class="tag tag-important">IMPORTANT</span>
+Trimite acest mesaj in chat:<br><br>
+<em>"Claude, continuam proiectul Norgedan. Ataseaza contextul: ghidul e la https://norgedan.github.io/ghid-github-norgedan.html si acest status. Standardul nostru, fara exceptie: adevarul complet nu cel convenabil · verificare inainte de scriere, nicio cifra sau afirmatie din memorie · citatele biblice confruntate cu Biblia de la Bucuresti 1688 (PDF pe care il reincarc) · lucru chirurgical, se corecteaza pasajul vizat nu se rescrie documentul · comenzi POSIX portabile, masina e OpenBSD · verifica, nu presupune. Urmeaza Doc VII — Familia si Societatea; discutam structura inainte de scriere."</em><br><br>
+Ataseaza: acest fisier + PDF-ul Bibliei 1688 daca lucram pe texte.</div>
 
-<footer>
-<p>Status generat: 4 septembrie 2026 — Sesiunea Norgedan cu Claude Sonnet</p>
-<p style="margin-top:.3rem">Corpus: ~58.000 cuvinte · 12 documente active · 5 repo-uri · Google Search Console verificat</p>
+<p>Status actualizat: 18 septembrie 2026</p>
+<p style="margin-top:.3rem">Proiect: 154.873 cuvinte · 36 documente · 6 repo-uri · SEO complet peste tot · verificare automata inainte de push</p>
 <p style="margin-top:.3rem">Toate documentele: Biblia de la Bucuresti 1688 (RO) · Norsk standardoversettelse (NO)</p>
 </footer>
 </div>
