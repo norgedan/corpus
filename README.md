@@ -4,7 +4,7 @@
 
 Un corpus de șase documente teologice, științifice și geopolitice în română și norvegiană, despre Dumnezeu, om, bine și rău, geopolitică, planetă și inteligența artificială.
 
-Et korpus med tolv teologiske, vitenskapelige og geopolitiske dokumenter på rumensk og norsk, om Gud, mennesket, godt og ondt, geopolitikk, planeten og kunstig intelligens.
+Et korpus med seks teologiske, vitenskapelige og geopolitiske dokumenter på rumensk og norsk, om Gud, mennesket, godt og ondt, geopolitikk, planeten og kunstig intelligens.
 
 ---
 
