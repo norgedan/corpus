@@ -51,4 +51,4 @@ https://creativecommons.org/licenses/by/4.0/
 ---
 
 *Biblia de la București, 1688 (RO) · Norsk standardoversettelse (NO)*
-*6 documente · ~61.000 de cuvinte · 2025–2026*
+*6 documente · ~62.000 de cuvinte · 2025–2026*
