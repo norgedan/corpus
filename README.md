@@ -51,4 +51,4 @@ https://creativecommons.org/licenses/by/4.0/
 ---
 
 *Biblia de la București, 1688 (RO) · Bibelen 1930 (NO)*
-*6 documente · ~64.000 de cuvinte · 2025–2026*
+*6 documente · ~66.000 de cuvinte · 2025–2026*
